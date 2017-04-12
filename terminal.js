@@ -174,7 +174,6 @@ $(document).ready(function(){
         $loadedintro=$loadedintro.replace(/\^/g,'<b>');
         $loadedintro=$loadedintro.replace(/~/g,'</b>');
         $('#introdiv').html($loadedintro);
-        $('#defaultline').before('<div class="commandline" id="commandline0"><span class="defaulttext">hello@thispageisblank : ~$ </span>'+$salute+'</div>');
       }
       $p++;
   }
@@ -256,7 +255,7 @@ $(document).ready(function(){
      $msgcmd=0; 
     }
     else $command2=$command;
-    $('#defaultline').before('<div class="commandline" id="commandline'+$l+'"><span class="defaulttext">'+ip+'@atulbhats : ~$ </span>'+$command2+'</div>');
+    $('#defaultline').before('<div class="commandline" id="commandline'+$l+'"><span class="defaulttext">user@thispageisblank : ~$ </span>'+$command2+'</div>');
     if($command=='exit'){
       $html="The Site Will Self Destruct in <span id='dest'>5</span>";
       hidedefault();
@@ -352,7 +351,7 @@ $(document).ready(function(){
             break;
 
             case 'user':
-            $html="The only info I have is you are <span class='defaulttext'>"+ip+"</span>, and that's the most I can find out about you. Anyways thanks for visiting";
+            $html="The only info I have is you are nothing, and that's the most I can find out about you. Anyways thanks for visiting";
             break;
 
             case 'social':
