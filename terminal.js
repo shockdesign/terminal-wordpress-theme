@@ -61,11 +61,11 @@ $(document).ready(function(){
   $help="<div class='help'>"+
       "<div>Interface Commands</div>"+
       "<div><b>ls</b>Lists out Available Commands</div>"+
-      "<div><b>cls</b>clear screen</div>"+
-        "</table>";
+      "<div><b>clear</b>clear screen</div>"+
+      "<div><b>reload</b>reload</div>"+
+      "</div>";
 
   $intro_run=1;
-  
 
   $type=setInterval(function(){
             writeintro();
@@ -174,11 +174,7 @@ $(document).ready(function(){
           break;
 
           case 'ls':
-          $html="Available Commands<br><b>help\tcls\tpaste\tctrl+v</b>";
-          break;
-
-          case 'bio':
-          $html="Enter your Bio in the JS File";
+          $html="Available Commands<br><b>help\tclear\treload</b>";
           break;
 
           case 'user':
@@ -189,7 +185,7 @@ $(document).ready(function(){
           $html=$help;
           break;
 
-          case 'cls':
+          case 'clear':
           $clr=1;
           $msg=0;
           $html="";
@@ -201,10 +197,6 @@ $(document).ready(function(){
 
           case 'reload':
           $html="<script>location.reload();</script>";
-          break;
-
-          case 'privacy':
-          $html="Ok. I know for some of you seeing your IP address being loaded is a scary thing. But don't worry. <br> <h4> Privacy Statement</h4> <p>This web page loads only the IP address which is obtained whenever a user visits any website on the internet. Apart from this data which is only the IP address of the visiting system, no other data is stored by atulbhats.com on the user's computer nor is any data loaded by atulbhats.com from the users computer. The website uses simple PHP line to get the IP address and uses the javascript code to get the system time as to greet the user upon site load. No other information is obtained, contained or extracted by the website from the system.</p><p>The above statement only applies for the web page at atulbhats.com and not the subdomains and directories. If the use visits any of the directories on this domains, then the web page may or may not store cookies and receive local data for the page functionality. However, No DATA IS SHARED with a third party or entity of any kind.</p> So relax. ;)";
           break;
 
           default :
