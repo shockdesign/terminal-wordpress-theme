@@ -21,10 +21,7 @@ function skipintro($type){
   clearInterval($type);     
   $p==$intro.length;
   $intro=$intro.replace(/#/gi,'<br>');
-  $intro=$intro.replace(/\/BGui/gi,'<b>gui</b>');
   $intro=$intro.replace(/\/BHelp/gi,'<b>help</b>');
-  $intro=$intro.replace(/CPY/gi,'<span id="copy">&copy;'+$copy+'</span>');
-  $intro=$intro.replace('GUI','<a href=\'gui\' class="guilink">Click Here</a>');
   $('#introdiv').html($intro);  
   $('#defaultline').show();
   clearInterval($type);   
@@ -62,9 +59,9 @@ $(document).ready(function(){
   function show_available_commands() {
     var commands="<div class='help'>"+
         "<div>Interface Commands</div>"+
-        "<div><b>ls</b>Lists out Available Commands</div>"+
-        "<div><b>clear</b>clear screen</div>"+
-        "<div><b>reload</b>reload</div>";
+        "<div><b>help</b>Lists all available commands</div>"+
+        "<div><b>clear</b>Clear the screen</div>"+
+        "<div><b>reload</b>Reload this site</div>";
     for (var i = 0; i < pages.length; i ++) {
       var page = pages[i];
       commands += "<div><b>" + page.command + "</b>" + page.title + "</div>";
@@ -142,10 +139,6 @@ $(document).ready(function(){
         case 'hi':
         case 'hello':
         $html=$command+" to you too! Please type <b>help</b> and hit enter for info on commands. For just the list, type <b>ls</b>";
-        break;
-
-        case 'ls':
-        $html=show_available_commands();
         break;
 
         case 'user':
