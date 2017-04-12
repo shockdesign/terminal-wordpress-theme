@@ -149,6 +149,10 @@ $(document).ready(function(){
         $html=show_available_commands();
         break;
 
+        case 'xyzzy':
+        $html="Nothing happens";
+        break;
+
         case 'clear':
         $clr=1;
         $msg=0;
@@ -285,6 +289,10 @@ $(document).ready(function(){
 
   $('body').click(function(){
     $('body').scrollTop($(window).height());
+  });
+
+  $(document).on("tap", function(e) {
+    $('#actualinput').focus();
   });
 
   $(document).keydown(function(e) {

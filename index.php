@@ -33,7 +33,9 @@
     <script>
         $(document).on('click','#defaultline', function() {
           $('#actualinput').focus();
-          $('#commandcontainer').focus();
+        });
+        $(document).on('tap', function() {
+          $('#actualinput').focus();
         });
     </script>
     <?php wp_head(); ?>
