@@ -54,8 +54,6 @@ $(document).ready(function(){
   %:  copyright
   ~ : bold close
   */
-  $copy="terminal";
-  $logged="PS: You Are Logged in as user And that\'s your login name.";
   $intro="#";
   $intro="This terminal is still under work. Start with '/BHelp' to learn the commands.";
   $help="<div class='help'>"+
@@ -77,30 +75,13 @@ $(document).ready(function(){
         if($intro[$p]=='#') $('#introdiv').html($html+'<br>');
         else if($intro[$p]=='%') $('#introdiv').html($html+'<span id="copy">&copy;');
         else if($intro[$p]=='*') $('#introdiv').html($html+'</span>');
-        else if($intro[$p]=='/' && $intro[$p+1]=='B' && $intro[$p+2]=='G' && $intro[$p+3]=='u' && $intro[$p+4]=='i'){
-          $('#introdiv').html($html+'<b>gui</b>');
-          $p=$p+4;  
-        }
-        else if($intro[$p]=='/' && $intro[$p+1]=='B' && $intro[$p+2]=='P' && $intro[$p+3]=='r' && $intro[$p+4]=='i'){
-          $('#introdiv').html($html+'<b>privacy</b>');
-          $p=$p+4;  
-        }
         else if($intro[$p]=='/' && $intro[$p+1]=='B' && $intro[$p+2]=='H' && $intro[$p+3]=='e' && $intro[$p+4]=='l' && $intro[$p+5]=='p' ){
           $('#introdiv').html($html+'<b>help</b>');
           $p=$p+5;  
         } 
-        else if($intro[$p]=='C' && $intro[$p+1]=='P' && $intro[$p+2]=='Y'){
-          $('#introdiv').html($html+'<span id="copy">&copy;'+$copy+'</span>');
-          $p=$p+2;  
-        } 
-        else if($intro[$p]=='G' && $intro[$p+1]=='U' && $intro[$p+2]=='I'){
-          $('#introdiv').html($html+'<a href=\'gui\' class="guilink">Click Here</a>');
-          $p=$p+2;  
-        } 
         else {
           $('#introdiv').html($html+$intro[$p]);
         }
-          
       }
       else if($p>=$intro.length-1){
         clearInterval($type);
@@ -114,27 +95,9 @@ $(document).ready(function(){
       $p++;
   }
 
-
-  function sendmsg(){
-    /* Add msg sending Ajax Code here */
-    alert('Update Msg Sending Code');
-  }
-
-  function savecommand(command,type){
-    $.ajax({  
-          type: "POST",  
-          url: "commands/newcommand.php",  
-          data: 'c='+command+'&t='+type,
-          success :function(){
-            
-          } 
-      });
-  }
-
   setInterval(function(){
           blinkcursor();
         },560);
-
 
   function blinkcursor(){
     $bg=$('.cursor').css('background-color');
@@ -148,7 +111,7 @@ $(document).ready(function(){
   $l=0;
 
   var $history=new Array();
-  var $cmdarray=new Array('help','cls','gui','user','ascii','pic','bio','dob','email','social','message','dir','physics','phy','paste','ctrl+v','exit','fb','in','tw','g+','ig','be','visit','first','gui','ip','color','cipher','2012','2013','2014','2015');
+  var $cmdarray=new Array('help','clear');
   
   function runcommand($command){
     /*addcommand();*/
@@ -200,16 +163,7 @@ $(document).ready(function(){
           break;
 
           default :
-          $save=1;
           $html="\'"+$command+"\' Is not a known Command. But that might change the next time you are here. Use '<b>help</b>' for the list of available commands";
-
-          if($save==1){
-            savecommand($command,0);
-            $save=0;
-          }
-          else{
-            savecommand($command,1);
-          }
         }
 
     }
