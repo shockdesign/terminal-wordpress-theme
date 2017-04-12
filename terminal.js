@@ -56,14 +56,20 @@ $(document).ready(function(){
   */
   $intro="#";
   $intro="This terminal is still under work. Start with '/BHelp' to learn the commands.";
-  $help="<div class='help'>"+
-      "<div>Interface Commands</div>"+
-      "<div><b>ls</b>Lists out Available Commands</div>"+
-      "<div><b>clear</b>clear screen</div>"+
-      "<div><b>reload</b>reload</div>"+
-      "</div>";
 
   $intro_run=1;
+
+  function show_available_commands() {
+    var commands="<div class='help'>"+
+        "<div>Interface Commands</div>"+
+        "<div><b>ls</b>Lists out Available Commands</div>"+
+        "<div><b>clear</b>clear screen</div>"+
+        "<div><b>reload</b>reload</div>";
+
+
+    commands +="</div>";
+    return commands;
+  }
 
   $type=setInterval(function(){
             writeintro();
@@ -130,42 +136,48 @@ $(document).ready(function(){
     else $command2=$command;
     $('#defaultline').before('<div class="commandline" id="commandline'+$l+'"><span class="defaulttext">user@thispageisblank : ~$ </span>'+$command2+'</div>');
     if($msg==0){
-        switch($command){
-          case 'hi':
-          case 'hello':
-          $html=$command+" to you too! Please type <b>help</b> and hit enter for info on commands. For just the list, type <b>ls</b>";
-          break;
+      switch($command){
+        case 'hi':
+        case 'hello':
+        $html=$command+" to you too! Please type <b>help</b> and hit enter for info on commands. For just the list, type <b>ls</b>";
+        break;
 
-          case 'ls':
-          $html="Available Commands<br><b>help\tclear\treload</b>";
-          break;
+        case 'ls':
+        $html=show_available_commands();
+        break;
 
-          case 'user':
-          $html="The only info I have is you are nothing, and that's the most I can find out about you. Anyways thanks for visiting";
-          break;
+        case 'user':
+        $html="The only info I have is you are nothing, and that's the most I can find out about you. Anyways thanks for visiting";
+        break;
 
-          case 'help':
-          $html=$help;
-          break;
+        case 'help':
+        $html=show_available_commands();
+        break;
 
-          case 'clear':
-          $clr=1;
-          $msg=0;
-          $html="";
-          break;
+        case 'clear':
+        $clr=1;
+        $msg=0;
+        $html="";
+        break;
 
-          case '':
-          $html="";
-          break;
+        case '':
+        $html="";
+        break;
 
-          case 'reload':
-          $html="<script>location.reload();</script>";
-          break;
+        case 'reload':
+        $html="<script>location.reload();</script>";
+        break;
 
-          default :
-          $html="\'"+$command+"\' Is not a known Command. But that might change the next time you are here. Use '<b>help</b>' for the list of available commands";
+        default :
+        $html="\'"+$command+"\' Is not a known Command. But that might change the next time you are here. Use '<b>help</b>' for the list of available commands";
+        for (var i = 0; i < pages.length; i ++) {
+          var page = pages[i];
+          if ($command == page.command) {
+            $html = page.page;
+            break;
+          }
         }
-
+      }
     }
 
     $('#defaultline').before('<div class="line" id="line'+$l+'"></div>');
