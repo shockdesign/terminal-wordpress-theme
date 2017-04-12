@@ -113,10 +113,10 @@ $(document).ready(function(){
   %:  copyright
   ~ : bold close
   */
-  $copy=" "+year+" AtulBhatS - terminal version."; /* Hey you Code Reader. You may Steal the Idea. Copy the code. But dont steal the code */
-  $logged="PS: You Are Logged in as "+ip+" And that\'s your login name.";
+  $copy="terminal"; /* Hey you Code Reader. You may Steal the Idea. Copy the code. But dont steal the code */
+  $logged="PS: You Are Logged in as user And that\'s your login name.";
   $intro="#";
-  $intro="Welcome to atulbhats.com | Designed like a terminal to add more interaction with user. If terminal is not your thing, use the command '/BGui' to move to a graphical interface. To continue with terminal, start with '/BHelp'.#If you do not have a working keyboard, GUI#"+$logged+"##CPY";
+  $intro="Start with '/BHelp' to learn the commands.";
   $help="<div class='help'>"+
       "<div>Interface Commands</div>"+
       "<div><b>ls</b>Lists out Available Commands</div>"+
@@ -141,7 +141,6 @@ $(document).ready(function(){
       "<div><b>define</b>displays the meaning of a word. eg: <b>define website</b></div>"+
       "<div><b>weather</b>displays the weather at a place. eg: <b>weather new york</b></div>"+
       "<div><b>locate</b>searches for a place on map. eg: <b>locate new york</b></div>"+
-      "<div><b>exit</b>Exits Terminal</div>"+
       "</table>";
 
   $intro_run=1;
