@@ -1,17 +1,18 @@
 <!DOCTYPE HTML>
+<html lang="en">
   <head>
-    <title>This Page is Blank</title>
+    <title><?php echo get_bloginfo( 'name' ); ?></title>
     <meta charset="utf-8">
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="This Page is Blank" />
-    <meta property="og:description" content="Personal trials and tribulations" />
+    <meta property="og:title" content="<?php echo get_bloginfo( 'name' ); ?>" />
+    <meta property="og:description" content="<?php echo get_bloginfo( 'description' ); ?>" />
     <meta property="og:url" content="https://thispageisblank.net/" />
     <meta property="og:keywords" content="Code, Command Line, Projects" />
     <meta property="og:site_name" content="This Page is Blank" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="Code, Command Line, Projects">
-    <meta name="description" content="Personal site of Rajesh Singh">
+    <meta name="description" content="<?php echo get_bloginfo( 'description' ); ?>">
     <meta property="og:image" content="favicon.ico" />
     <meta name="robots" content="index,follow">
     <link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
@@ -23,6 +24,7 @@
           $('#actualinput').focus();
         });
     </script>
+    <?php wp_head(); ?>
 </head>
 <body>
   <noscript>
