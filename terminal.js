@@ -1,3 +1,7 @@
+/* This code is based off code by Atul Bhats, you can see the original at http://atulbhats.com/terminal */
+/* However there are a lot of changes and cleanups to make this work with wordpress with dynamic commands */
+/* Allowing you to hopefully use Wordpress as you feel like it and this should dynamically work with it */
+
 function ping($site){
   $clloc=$site.replace('.','');
   $clloc=$clloc.replace('-','');
@@ -66,33 +70,12 @@ function skipintro($type){
   $('#introdiv').html($intro);  
   $('#defaultline').show();
   clearInterval($type);   
-  $('#defaultline').before('<div class="commandline" id="commandline0"><span class="defaulttext">welcome_bot@atulbhats : ~$ </span>'+$salute+'</div>');   
 }
 
 
 $(document).ready(function(){
 
   $('#introdiv').html('');
-
-  $time=new Date();
-  $time_hours=$time.getHours();
-  $time_mins=$time.getMinutes();
-
-  if($time_hours>15 && $time_hours>00){
-    $salute="Evening";
-  }
-  else if($time_hours>11 && $time_hours>00){
-    $salute="Afternoon";
-  }
-  else if($time_hours>00 && $time_hours>00){
-    $salute="Morning";
-  }
-  else{
-    $salute="Day";
-  }
-
-  $salute="Good "+$salute; 
-
 
   $z=0;
   $x=0;
@@ -113,7 +96,7 @@ $(document).ready(function(){
   %:  copyright
   ~ : bold close
   */
-  $copy="terminal"; /* Hey you Code Reader. You may Steal the Idea. Copy the code. But dont steal the code */
+  $copy="terminal";
   $logged="PS: You Are Logged in as user And that\'s your login name.";
   $intro="#";
   $intro="Start with '/BHelp' to learn the commands.";
@@ -141,7 +124,7 @@ $(document).ready(function(){
       "<div><b>define</b>displays the meaning of a word. eg: <b>define website</b></div>"+
       "<div><b>weather</b>displays the weather at a place. eg: <b>weather new york</b></div>"+
       "<div><b>locate</b>searches for a place on map. eg: <b>locate new york</b></div>"+
-      "</table>";
+        "</table>";
 
   $intro_run=1;
   
@@ -191,7 +174,7 @@ $(document).ready(function(){
         $loadedintro=$loadedintro.replace(/\^/g,'<b>');
         $loadedintro=$loadedintro.replace(/~/g,'</b>');
         $('#introdiv').html($loadedintro);
-        $('#defaultline').before('<div class="commandline" id="commandline0"><span class="defaulttext">welcome_bot@atulbhats : ~$ </span>'+$salute+'</div>');
+        $('#defaultline').before('<div class="commandline" id="commandline0"><span class="defaulttext">hello@thispageisblank : ~$ </span>'+$salute+'</div>');
       }
       $p++;
   }
