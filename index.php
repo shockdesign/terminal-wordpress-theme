@@ -16,8 +16,8 @@
     <meta name="robots" content="index,follow">
     <link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script type="text/javascript" src="terminal.js"></script>
-    <link rel='stylesheet' href='style.css' type='text/css' media='all' />
+    <script type="text/javascript" src="./terminal.js"></script>
+    <link rel='stylesheet' href='./style.css' type='text/css' media='all' />
     <?php echo $script; ?>
     <script>
         $(document).on('click','#defaultline', function(){
