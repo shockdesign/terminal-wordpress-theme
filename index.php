@@ -22,6 +22,7 @@
     <script>
         $(document).on('click','#defaultline', function() {
           $('#actualinput').focus();
+          $('#commandcontainer').focus();
         });
     </script>
     <?php wp_head(); ?>
