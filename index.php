@@ -14,7 +14,7 @@
     <meta name="description" content="Personal site of Rajesh Singh">
     <meta property="og:image" content="favicon.ico" />
     <meta name="robots" content="index,follow">
-    <link href='http://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script type="text/javascript" src="terminal.js"></script>
     <link rel='stylesheet' href='style.css' type='text/css' media='all' />
