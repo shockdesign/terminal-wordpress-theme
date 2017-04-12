@@ -1,0 +1,110 @@
+body{
+  padding:10px;
+  /*overflow:hidden;*/
+  background: #181320;
+  color:#eee;
+  font-family: 'VT323', monospace;
+  line-height: 1.5;
+  font-size:17px;
+}
+
+.cursor{
+  width: 10px;
+  height:20px;
+  display:inline-block;
+  vertical-align: bottom;
+  background-color: #eee;
+}
+
+#actualinput{
+  display: block;
+  background: transparent;
+  color: transparent;
+  outline: none;
+  border:none;
+  width: 0px;
+
+}
+
+.defaulttext,#ascii{
+  color:rgb(219, 158, 0);
+}
+
+.commandline,
+#defaultline{
+  margin-top: 20px;
+}
+
+b {
+  color: #FFEC88;
+  font-weight: lighter;
+}
+
+.guilink{
+  color:orange;
+  text-decoration: none;
+}
+
+.profilepic{
+  border:5px solid #fff;
+  margin-top:10px;
+}
+
+div.help b:first-child {
+  padding-right: 20px;
+}
+
+a{
+  color:orange;
+  text-decoration: none;
+}
+
+.ascii span {
+  display: block;
+  line-height: 1.0;
+}
+
+.weather d{
+  position: relative;
+  top: -8px;
+  padding-left: 5px;
+  font-size: 10px;
+}
+
+.help div{
+  display: block;
+}
+  
+.news-item {
+display: block;
+vertical-align: top;
+margin-top: 20px;
+border-bottom: 1px dashed #222;
+padding: 10px 0px;
+}
+
+.news-item span {
+    display: inline-block;
+}
+
+span.news-title {
+    font-weight: bold;
+}
+
+span.news-description {
+    font-size: 15px;
+}
+
+span.news-timestamp {
+    font-size: 12px;
+    margin: 0;
+}
+
+span.news-link {
+    width: 100%;
+}
+
+@viewport {  
+    width: device-width;  
+} 
+
