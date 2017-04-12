@@ -65,8 +65,10 @@ $(document).ready(function(){
         "<div><b>ls</b>Lists out Available Commands</div>"+
         "<div><b>clear</b>clear screen</div>"+
         "<div><b>reload</b>reload</div>";
-
-
+    for (var i = 0; i < pages.length; i ++) {
+      var page = pages[i];
+      commands += "<div><b>" + page.command + "</b>" + page.title + "</div>";
+    }
     commands +="</div>";
     return commands;
   }
