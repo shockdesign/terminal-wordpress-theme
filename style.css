@@ -5,7 +5,7 @@ body{
   color:#eee;
   font-family: 'VT323', monospace;
   line-height: 1.5;
-  font-size:17px;
+  font-size:24px;
 }
 
 .cursor{
@@ -40,16 +40,6 @@ b {
   font-weight: lighter;
 }
 
-.guilink{
-  color:orange;
-  text-decoration: none;
-}
-
-.profilepic{
-  border:5px solid #fff;
-  margin-top:10px;
-}
-
 div.help b:first-child {
   padding-right: 20px;
 }
@@ -59,51 +49,135 @@ a{
   text-decoration: none;
 }
 
-.ascii span {
-  display: block;
-  line-height: 1.0;
-}
-
-.weather d{
-  position: relative;
-  top: -8px;
-  padding-left: 5px;
-  font-size: 10px;
-}
-
 .help div{
   display: block;
 }
   
-.news-item {
-display: block;
-vertical-align: top;
-margin-top: 20px;
-border-bottom: 1px dashed #222;
-padding: 10px 0px;
-}
-
-.news-item span {
-    display: inline-block;
-}
-
-span.news-title {
-    font-weight: bold;
-}
-
-span.news-description {
-    font-size: 15px;
-}
-
-span.news-timestamp {
-    font-size: 12px;
-    margin: 0;
-}
-
-span.news-link {
-    width: 100%;
-}
-
 @viewport {  
     width: device-width;  
 }
+
+@keyframes flicker {
+  0% {
+    opacity: 0.00764;
+  }
+  5% {
+    opacity: 0.47269;
+  }
+  10% {
+    opacity: 0.83926;
+  }
+  15% {
+    opacity: 0.40307;
+  }
+  20% {
+    opacity: 0.17243;
+  }
+  25% {
+    opacity: 0.91746;
+  }
+  30% {
+    opacity: 0.54952;
+  }
+  35% {
+    opacity: 0.83544;
+  }
+  40% {
+    opacity: 0.46501;
+  }
+  45% {
+    opacity: 0.45345;
+  }
+  50% {
+    opacity: 0.65416;
+  }
+  55% {
+    opacity: 0.96365;
+  }
+  60% {
+    opacity: 0.36003;
+  }
+  65% {
+    opacity: 0.67651;
+  }
+  70% {
+    opacity: 0.28658;
+  }
+  75% {
+    opacity: 0.18924;
+  }
+  80% {
+    opacity: 0.41655;
+  }
+  85% {
+    opacity: 0.31774;
+  }
+  90% {
+    opacity: 0.73679;
+  }
+  95% {
+    opacity: 0.43748;
+  }
+  100% {
+    opacity: 0.27216;
+  }
+}
+.container {
+  background: #121010;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.container::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(18, 16, 16, 0.1);
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+  animation: flicker 0.15s infinite;
+}
+.container::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 2;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+@keyframes overlay-anim {
+  0% {
+    visibility: hidden;
+  }
+  20% {
+    visibility: hidden;
+  }
+  21% {
+    visibility: visible;
+  }
+  100% {
+    visibility: hidden;
+  }
+}
+.overlay {
+  color: #00FF00;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 60px;
+  visibility: hidden;
+  pointer-events: none;
+}
+
