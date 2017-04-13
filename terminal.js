@@ -1,6 +1,8 @@
 /* This code is based off code by Atul Bhats, you can see the original at http://atulbhats.com/terminal */
 /* However there are a lot of changes and cleanups to make this work with wordpress with dynamic commands */
 /* Allowing you to hopefully use Wordpress as you feel like it and this should dynamically work with it */
+/* TODO: Remove all traces of JQuery as it'd be one less dependency */
+/* TODO: Theming? */
 
 function ping($site){
   $clloc=$site.replace('.','');
@@ -78,6 +80,12 @@ $(document).ready(function(){
     }
 
     console.log("Too many matching results or no results found");
+    if (results.length > 0) {
+      for (var i = 0; i < results.length; i ++) {
+        $html += results[i] + "\t";
+      }
+    }
+
     return command;
   }
 
@@ -301,8 +309,8 @@ $(document).ready(function(){
     var existing = $('#commandcontainer').text();
     var code = e.keyCode || e.which;
     if (code == '9') {
-      $('#commandcontainer').text(find_tab_completed_command(existing));
-      $('#actualinput').val(find_tab_completed_command(existing));
+      var results = find_tab_completed_command(existing);
+      $('#actualinput').val(results);
       return false;
     }
   });
