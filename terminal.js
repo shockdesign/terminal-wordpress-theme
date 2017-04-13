@@ -302,6 +302,7 @@ $(document).ready(function(){
     var code = e.keyCode || e.which;
     if (code == '9') {
       $('#commandcontainer').text(find_tab_completed_command(existing));
+      $('#actualinput').val(find_tab_completed_command(existing));
       return false;
     }
   });
