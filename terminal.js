@@ -56,6 +56,31 @@ $(document).ready(function(){
 
   $intro_run=1;
 
+  function find_tab_completed_command(command) {
+    var commands = ['help', 'clear', 'reload'];
+    for (var i = 0; i < pages.length; i ++) {
+      var page = pages[i];
+      commands.push(page.command);
+    }
+
+    /* Loop through the list of commands and find if there is enough information for a single match */
+    var results = [];
+    for (var i = 0; i < commands.length; i ++) {
+      if (commands[i].startsWith(command)) {
+        results.push(commands[i]);
+      }
+    }
+
+    if (results.length == 1) {
+      /* One result, lets use it */
+      console.log("Found tab result: " + results[0]);
+      return results[0];
+    }
+
+    console.log("Too many matching results or no results found");
+    return command;
+  }
+
   function show_available_commands() {
     var commands="<div class='help'>"+
         "<div>Interface Commands</div>"+
@@ -262,6 +287,9 @@ $(document).ready(function(){
       }
 
      /*  return false;*/
+    }
+    else if(e.which==9){
+      $('#commandcontainer').text(find_tab_completed_command($existing));
     }
     else if(e.which==13){
       runcommand($existing);
