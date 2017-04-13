@@ -4,31 +4,9 @@
 /* TODO: Remove all traces of JQuery as it'd be one less dependency */
 /* TODO: Theming? */
 
-function ping($site){
-  $clloc=$site.replace('.','');
-  $clloc=$clloc.replace('-','');
-  $('.ping'+$clloc).html("");
-  http_ping($site,$clloc);
-
-}
-
 function hidedefault(){
   $('#defaultline').hide();
 }
-
-function skipintro($type){
-  $intro_run=0;
-  $introstop=true;
-  $('#introdiv').html("");
-  clearInterval($type);     
-  $p==$intro.length;
-  $intro=$intro.replace(/#/gi,'<br>');
-  $intro=$intro.replace(/\/BHelp/gi,'<b>help</b>');
-  $('#introdiv').html($intro);  
-  $('#defaultline').show();
-  clearInterval($type);   
-}
-
 
 $(document).ready(function(){
 
@@ -178,7 +156,7 @@ $(document).ready(function(){
       }
     }
     else $command2=$command;
-    $('#defaultline').before('<div class="commandline" id="commandline'+$l+'"><span class="defaulttext">user@thispageisblank : ~$ </span>'+$command2+'</div>');
+    $('#defaultline').before('<div class="commandline" id="commandline'+$l+'"><span class="defaulttext">~ </span>'+$command2+'</div>');
     if($msg==0){
       switch($command){
         case 'hi':
@@ -252,10 +230,7 @@ $(document).ready(function(){
   $(document).bind('keyup', function(e) {
     $existing=$('#commandcontainer').text();
 
-    if(e.which==27 && $intro_run==1){
-      skipintro($type);
-    }
-    else if(e.which==38){
+    if(e.which==38){
       if($x>0){
         $('#actualinput').val($history[$x-1]);
         $('#commandcontainer').text($history[$x-1]);

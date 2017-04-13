@@ -42,15 +42,14 @@
 </head>
 <body>
   <noscript>
-    <div class="line"><span class="defaulttext">welcome@thispageisblank : ~$ </span> This page is blank.</div></br>
-    <div class="line"><span class="defaulttext">no_javascript@thispageisblank : ~$ </span> It looks like Javascript has been disabled on your browser. This website runs on javascript for user experience. Please enable it and reload the website.</div><br>
+    <div class="line"><span class="defaulttext">~ </span> It looks like javascript has been disabled on your browser. This website runs on javascript for user experience. Please enable it and refresh the website.</div><br>
   </noscript>
   <div id="introdiv">
-      <span class="defaulttext">user@thispageisblank : ~$  </span><span id="commandcontainer">Oops! Jquery could not be loaded. The connection was either too slow or interrupted. Please Reload the page for a better UX.</span>
+      <span class="defaulttext">~  </span><span id="commandcontainer">There have been issues with the scripts required. Please refresh the browser to try again.</span>
   </div>
   <div id="commands">
     <div id="defaultline">
-      <span class="defaulttext">user@thispageisblank : ~$  </span><span id="commandcontainer"></span><span class="cursor"></span><input type="text" id="actualinput">
+      <span class="defaulttext">~  </span><span id="commandcontainer"></span><span class="cursor"></span><input type="text" id="actualinput">
     </div>
   </div>
 </body>
