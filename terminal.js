@@ -156,7 +156,7 @@ $(document).ready(function(){
       }
     }
     else $command2=$command;
-    $('#defaultline').before('<div class="commandline" id="commandline'+$l+'"><span class="defaulttext">h~ </span>'+$command2+'</div>');
+    $('#defaultline').before('<div class="commandline" id="commandline'+$l+'"><span class="defaulttext">~ </span>'+$command2+'</div>');
     if($msg==0){
       switch($command){
         case 'help':
