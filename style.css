@@ -1,9 +1,8 @@
 body{
-  /*overflow:hidden;*/
-  background: #181320;
+  background: #121010;
   color:#eee;
   font-family: 'VT323', monospace;
-  line-height: 1.5;
+  line-height: 1;
   font-size:24px;
 }
 
@@ -122,11 +121,9 @@ a{
   }
 }
 .container {
-/*  background: #121010; */
   width: 100%;
   height: 100%;
   position: relative;
-  overflow: hidden;
 }
 .container::after {
   content: " ";
