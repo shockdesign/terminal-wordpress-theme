@@ -81,9 +81,12 @@ $(document).ready(function(){
 
     console.log("Too many matching results or no results found");
     if (results.length > 0) {
-      for (var i = 0; i < results.length; i ++) {
-        $html += results[i] + "\t";
+      var response = "print:" + command + ":";
+      for (var i = 0; i < results.length - 1; i ++) {
+        response += results[i] + ":";
       }
+      response += results[results.length - 1];
+      runcommand(response);
     }
 
     return command;
@@ -149,7 +152,6 @@ $(document).ready(function(){
   $l=0;
 
   var $history=new Array();
-  var $cmdarray=new Array('help','clear');
   
   function runcommand($command){
     /*addcommand();*/
@@ -160,10 +162,20 @@ $(document).ready(function(){
     $x=$z;
     $command=$command.toLowerCase();
 
+    var extras = '';
+
     if($command=='cancelsending'){
      $command2='Cancelled';
      $msg=0;
      $msgcmd=0; 
+    }
+    else if ($command.startsWith("print")) {
+      var results = $command.split(':');
+      $command = "print";
+      $command2 = results[1];
+      for (var i = 2; i < results.length; i ++) {
+        extras +=  results[i] + "&#09;";
+      }
     }
     else $command2=$command;
     $('#defaultline').before('<div class="commandline" id="commandline'+$l+'"><span class="defaulttext">user@thispageisblank : ~$ </span>'+$command2+'</div>');
@@ -194,6 +206,10 @@ $(document).ready(function(){
 
         case '':
         $html="";
+        break;
+
+        case 'print':
+        $html = extras;
         break;
 
         case 'reload':
