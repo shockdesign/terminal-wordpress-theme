@@ -37,8 +37,8 @@ $(document).ready(function(){
   $intro_run=1;
 
   function find_tab_completed_command(command) {
-    if command == ""
-      return "";
+    if command.length == 0
+      return command;
 
     var commands = ['help', 'clear', 'reboot'];
     for (var i = 0; i < pages.length; i ++) {
