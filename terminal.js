@@ -37,7 +37,7 @@ $(document).ready(function(){
   $intro_run=1;
 
   function find_tab_completed_command(command) {
-    if command.length == 0
+    if (!command)
       return command;
 
     var commands = ['help', 'clear', 'reboot'];
