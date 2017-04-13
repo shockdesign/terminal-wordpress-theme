@@ -129,9 +129,6 @@ a{
   overflow: hidden;
 }
 .container::after {
-  content: " ";
-  display: block;
-  position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
@@ -143,9 +140,6 @@ a{
   animation: flicker 0.15s infinite;
 }
 .container::before {
-  content: " ";
-  display: block;
-  position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
