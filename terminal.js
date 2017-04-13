@@ -37,7 +37,7 @@ $(document).ready(function(){
   $intro_run=1;
 
   function find_tab_completed_command(command) {
-    var commands = ['help', 'clear', 'reload'];
+    var commands = ['help', 'clear', 'reboot'];
     for (var i = 0; i < pages.length; i ++) {
       var page = pages[i];
       commands.push(page.command);
@@ -75,7 +75,7 @@ $(document).ready(function(){
         "<div>Interface Commands</div>"+
         "<div><b>help</b>Lists all available commands</div>"+
         "<div><b>clear</b>Clear the screen</div>"+
-        "<div><b>reload</b>Reload this site</div>";
+        "<div><b>reboot</b>Reboot this system</div>";
     for (var i = 0; i < pages.length; i ++) {
       var page = pages[i];
       commands += "<div><b>" + page.command + "</b>" + page.title + "</div>";
@@ -156,18 +156,9 @@ $(document).ready(function(){
       }
     }
     else $command2=$command;
-    $('#defaultline').before('<div class="commandline" id="commandline'+$l+'"><span class="defaulttext">~ </span>'+$command2+'</div>');
+    $('#defaultline').before('<div class="commandline" id="commandline'+$l+'"><span class="defaulttext">h~ </span>'+$command2+'</div>');
     if($msg==0){
       switch($command){
-        case 'hi':
-        case 'hello':
-        $html=$command+" to you too! Please type <b>help</b> and hit enter for info on commands. For just the list, type <b>ls</b>";
-        break;
-
-        case 'user':
-        $html="The only info I have is you are nothing, and that's the most I can find out about you. Anyways thanks for visiting";
-        break;
-
         case 'help':
         $html=show_available_commands();
         break;
@@ -190,8 +181,8 @@ $(document).ready(function(){
         $html = extras;
         break;
 
-        case 'reload':
-        $html="<script>location.reload();</script>";
+        case 'reboot':
+        $html="The system is going down for reboot NOW!<script>location.reload();</script>";
         break;
 
         default :
