@@ -1,5 +1,4 @@
 body{
-  padding:10px;
   /*overflow:hidden;*/
   background: #181320;
   color:#eee;
@@ -156,28 +155,3 @@ a{
   background-size: 100% 2px, 3px 100%;
   pointer-events: none;
 }
-
-@keyframes overlay-anim {
-  0% {
-    visibility: hidden;
-  }
-  20% {
-    visibility: hidden;
-  }
-  21% {
-    visibility: visible;
-  }
-  100% {
-    visibility: hidden;
-  }
-}
-.overlay {
-  color: #00FF00;
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  font-size: 60px;
-  visibility: hidden;
-  pointer-events: none;
-}
-

@@ -53,7 +53,6 @@
         <span class="defaulttext">~  </span><span id="commandcontainer"></span><span class="cursor"></span><input type="text" id="actualinput">
       </div>
     </div>
-    <div class="overlay">AV-1</div>
   </div>
 </body>
 </html>
