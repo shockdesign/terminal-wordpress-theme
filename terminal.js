@@ -288,7 +288,7 @@ $(document).ready(function(){
 
      /*  return false;*/
     }
-    else if(e.altKey && e.which==9){
+    else if(e.ctrlKey){
       $('#commandcontainer').text(find_tab_completed_command($existing));
     }
     else if(e.which==13){
