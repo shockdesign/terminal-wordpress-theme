@@ -122,13 +122,16 @@ a{
   }
 }
 .container {
-  background: #121010;
+/*  background: #121010; */
   width: 100%;
   height: 100%;
   position: relative;
   overflow: hidden;
 }
 .container::after {
+  content: " ";
+  display: block;
+  position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
@@ -140,6 +143,9 @@ a{
   animation: flicker 0.15s infinite;
 }
 .container::before {
+  content: " ";
+  display: block;
+  position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
