@@ -288,15 +288,21 @@ $(document).ready(function(){
 
      /*  return false;*/
     }
-    else if(e.ctrlKey){
-      $('#commandcontainer').text(find_tab_completed_command($existing));
-    }
     else if(e.which==13){
       runcommand($existing);
       $('#actualinput').focus();
     }
     else{
       $type=true;
+    }
+  });
+
+  $(document).bind('keydown', function(e) {
+    var existing = $('#commandcontainer').text();
+    var code = e.keyCode || e.which;
+    if (code == '9') {
+      $('#commandcontainer').text(find_tab_completed_command(existing));
+      return false;
     }
   });
 
