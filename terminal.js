@@ -81,6 +81,74 @@ function outputText(outputText) {
   $(document).scrollTop($(document).height());
 }
 
+function runcommand($command) {
+  unnull();
+  rehistory($command);
+  $history[$z]=$command;
+  $z++;
+  $x=$z;
+  $command=$command.toLowerCase();
+
+  var extras = '';
+
+  if($command=='cancelsending'){
+   $command2='Cancelled';
+   $msg=0;
+   $msgcmd=0; 
+  }
+  else if ($command.startsWith("print")) {
+    var results = $command.split(':');
+    $command = "print";
+    $command2 = results[1];
+    for (var i = 2; i < results.length; i ++) {
+      extras +=  results[i] + "&#09;";
+    }
+  }
+  else $command2=$command;
+  $('#defaultline').before('<div class="commandline" id="commandline'+$l+'"><span class="defaulttext">~ </span>'+$command2+'</div>');
+  if($msg==0){
+    switch($command){
+      case 'help':
+      $html=show_available_commands();
+      break;
+
+      case 'xyzzy':
+      $html="Nothing happens";
+      break;
+
+      case 'clear':
+      $clr=1;
+      $msg=0;
+      $html="";
+      break;
+
+      case '':
+      $html="";
+      break;
+
+      case 'print':
+      $html = extras;
+      break;
+
+      case 'reboot':
+      $html="The system is going down for reboot NOW!<script>location.reload();</script>";
+      break;
+
+      default :
+      $html="\'"+$command+"\' Is not a known Command. But that might change the next time you are here. Use '<b>help</b>' for the list of available commands";
+      for (var i = 0; i < pages.length; i ++) {
+        var page = pages[i];
+        if ($command == page.command) {
+          $html = page.page;
+          break;
+        }
+      }
+    }
+  }
+
+  outputText($html);
+}
+
 $(document).ready(function() {
 
   $('#introdiv').html('');
@@ -96,48 +164,10 @@ $(document).ready(function() {
   $sendact=0;
   $clr=0;
   $save=0;
-  /*
-  # : br
-  ^ : bold open
-  %:  copyright
-  ~ : bold close
-  */
-  $intro="This terminal is still under work. Start with <b>help</b> to learn the commands.";
+  $intro=;
 
-  $('#introdiv').html($intro);
+  $('#introdiv').html("This terminal is still under work. Start with <b>help</b> to learn the commands.");
   showdefault();
-
-/*
-  $type=setInterval(function(){
-            writeintro();
-            },15);
-
-  function writeintro(){
-      $html=$('#introdiv').html();
-      if($p<$intro.length-1 && $intro_run==1){
-        if($intro[$p]=='#') $('#introdiv').html($html+'<br>');
-        else if($intro[$p]=='%') $('#introdiv').html($html+'<span id="copy">&copy;');
-        else if($intro[$p]=='*') $('#introdiv').html($html+'</span>');
-        else if($intro[$p]=='/' && $intro[$p+1]=='B' && $intro[$p+2]=='H' && $intro[$p+3]=='e' && $intro[$p+4]=='l' && $intro[$p+5]=='p' ){
-          $('#introdiv').html($html+'<b>help</b>');
-          $p=$p+5;  
-        } 
-        else {
-          $('#introdiv').html($html+$intro[$p]);
-        }
-      }
-      else if($p>=$intro.length-1){
-        clearInterval($type);
-        $intro_run=0;
-        $('#defaultline').show();
-        $loadedintro=$('#introdiv').html();
-        $loadedintro=$loadedintro.replace(/\^/g,'<b>');
-        $loadedintro=$loadedintro.replace(/~/g,'</b>');
-        $('#introdiv').html($loadedintro);
-      }
-      $p++;
-  }
-*/
 
   setInterval(function(){
           blinkcursor();
@@ -156,73 +186,6 @@ $(document).ready(function() {
 
   var $history=new Array();
   
-  function runcommand($command){
-    unnull();
-    rehistory($command);
-    $history[$z]=$command;
-    $z++;
-    $x=$z;
-    $command=$command.toLowerCase();
-
-    var extras = '';
-
-    if($command=='cancelsending'){
-     $command2='Cancelled';
-     $msg=0;
-     $msgcmd=0; 
-    }
-    else if ($command.startsWith("print")) {
-      var results = $command.split(':');
-      $command = "print";
-      $command2 = results[1];
-      for (var i = 2; i < results.length; i ++) {
-        extras +=  results[i] + "&#09;";
-      }
-    }
-    else $command2=$command;
-    $('#defaultline').before('<div class="commandline" id="commandline'+$l+'"><span class="defaulttext">~ </span>'+$command2+'</div>');
-    if($msg==0){
-      switch($command){
-        case 'help':
-        $html=show_available_commands();
-        break;
-
-        case 'xyzzy':
-        $html="Nothing happens";
-        break;
-
-        case 'clear':
-        $clr=1;
-        $msg=0;
-        $html="";
-        break;
-
-        case '':
-        $html="";
-        break;
-
-        case 'print':
-        $html = extras;
-        break;
-
-        case 'reboot':
-        $html="The system is going down for reboot NOW!<script>location.reload();</script>";
-        break;
-
-        default :
-        $html="\'"+$command+"\' Is not a known Command. But that might change the next time you are here. Use '<b>help</b>' for the list of available commands";
-        for (var i = 0; i < pages.length; i ++) {
-          var page = pages[i];
-          if ($command == page.command) {
-            $html = page.page;
-            break;
-          }
-        }
-      }
-    }
-
-    outputText($html);
-  }
 
   $(document).bind('keyup', function(e) {
     $existing=$('#commandcontainer').text();
