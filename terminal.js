@@ -38,9 +38,12 @@ $(document).ready(function(){
   $intro_run=1;
 
   var special_commands = [
-    {type: 'match', string: '<script>location.reload();</script>'},
-    {type: 'match', string: "<div class='help'>"},
-    {type: 'match', string: '</div>'}
+    "<script>location.reload();</script>",
+    "<div class='help'>",
+    "<div>",
+    "</div>",
+    "<b>",
+    "</b>"
   ];
 
 
@@ -140,12 +143,9 @@ $(document).ready(function(){
       var output = outputText[$position];
       /* Check that the remainingText doesn't match any special strings.. if so, then bang out the special bits of html */
       for (var i = 0; i < special_commands.length; i ++) {
-        var command = special_commands[i];
-        if (command.type == 'match') {
-          if (remainingText.startsWith(command.string)) {
-            output = command.string;
-            $position += command.string.length - 1;
-          }
+        if (remainingText.startsWith(special_commands[i])) {
+          output = command.string;
+          $position += command.string.length - 1;
         }
       }
       $('#line'+$l).html(html + output);
