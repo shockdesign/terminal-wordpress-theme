@@ -6,18 +6,89 @@
 /* TODO: Setup posts to be a directory */
 /* Maybe make this DOS themed? */
 
-function hidedefault(){
+function hidedefault() {
   $('#defaultline').hide();
 }
 
-$(document).ready(function(){
+function showdefault() {
+  $('#defaultline').show();
+}
+
+function find_tab_completed_command(command) {
+  if (!command)
+    return command;
+
+  var commands = ['help', 'clear', 'reboot'];
+  for (var i = 0; i < pages.length; i ++) {
+    var page = pages[i];
+    commands.push(page.command);
+  }
+
+  /* Loop through the list of commands and find if there is enough information for a single match */
+  var results = [];
+  for (var i = 0; i < commands.length; i ++) {
+    if (commands[i].startsWith(command)) {
+      results.push(commands[i]);
+    }
+  }
+
+  if (results.length == 1) {
+    /* One result, lets use it */
+    console.log("Found tab result: " + results[0]);
+    return results[0];
+  }
+
+  console.log("Too many matching results or no results found");
+  if (results.length > 0) {
+    var response = "print:" + command + ":";
+    for (var i = 0; i < results.length - 1; i ++) {
+      response += results[i] + ":";
+    }
+    response += results[results.length - 1];
+    runcommand(response);
+  }
+
+  return command;
+}
+
+function show_available_commands() {
+  var commands="<div class='help'>"+
+      "<div>Interface Commands</div>"+
+      "<div><b>help</b>Lists all available commands</div>"+
+      "<div><b>clear</b>Clear the screen</div>"+
+      "<div><b>reboot</b>Reboot this system</div>";
+  for (var i = 0; i < pages.length; i ++) {
+    var page = pages[i];
+    commands += "<div><b>" + page.command + "</b>" + page.title + "</div>";
+  }
+  commands +="</div>";
+  return commands;
+}
+
+function outputText(outputText) {
+  $('#defaultline').before('<div class="line" id="line'+$l+'"></div>');
+  $('#line'+$l).html(outputText);
+  $('#commandcontainer').text("");
+  $('#actualinput').val("");
+  $l++;
+  if($clr==1){
+    $l=0;
+    $('.line').remove();
+    $('.commandline').remove();
+    $clr=0;
+  }
+  $('#actualinput').focus();
+  $(document).scrollTop($(document).height());
+}
+
+$(document).ready(function() {
 
   $('#introdiv').html('');
 
   $z=0;
   $x=0;
   $('#actualinput').focus();
-  $('#defaultline').hide();
+  hidedefault();
   $('.cursor').css('background','rgb(238, 238, 238)');  
   $link="";
   $msg=0;
@@ -32,57 +103,6 @@ $(document).ready(function(){
   ~ : bold close
   */
   $intro="This terminal is still under work. Start with <b>help</b> to learn the commands.";
-
-  function find_tab_completed_command(command) {
-    if (!command)
-      return command;
-
-    var commands = ['help', 'clear', 'reboot'];
-    for (var i = 0; i < pages.length; i ++) {
-      var page = pages[i];
-      commands.push(page.command);
-    }
-
-    /* Loop through the list of commands and find if there is enough information for a single match */
-    var results = [];
-    for (var i = 0; i < commands.length; i ++) {
-      if (commands[i].startsWith(command)) {
-        results.push(commands[i]);
-      }
-    }
-
-    if (results.length == 1) {
-      /* One result, lets use it */
-      console.log("Found tab result: " + results[0]);
-      return results[0];
-    }
-
-    console.log("Too many matching results or no results found");
-    if (results.length > 0) {
-      var response = "print:" + command + ":";
-      for (var i = 0; i < results.length - 1; i ++) {
-        response += results[i] + ":";
-      }
-      response += results[results.length - 1];
-      runcommand(response);
-    }
-
-    return command;
-  }
-
-  function show_available_commands() {
-    var commands="<div class='help'>"+
-        "<div>Interface Commands</div>"+
-        "<div><b>help</b>Lists all available commands</div>"+
-        "<div><b>clear</b>Clear the screen</div>"+
-        "<div><b>reboot</b>Reboot this system</div>";
-    for (var i = 0; i < pages.length; i ++) {
-      var page = pages[i];
-      commands += "<div><b>" + page.command + "</b>" + page.title + "</div>";
-    }
-    commands +="</div>";
-    return commands;
-  }
 
   $('#introdiv').html($intro).
   $('#defaultline').show();
@@ -118,22 +138,6 @@ $(document).ready(function(){
       $p++;
   }
 */
-
-  function outputText(outputText) {
-    $('#defaultline').before('<div class="line" id="line'+$l+'"></div>');
-    $('#line'+$l).html(outputText);
-    $('#commandcontainer').text("");
-    $('#actualinput').val("");
-    $l++;
-    if($clr==1){
-      $l=0;
-      $('.line').remove();
-      $('.commandline').remove();
-      $clr=0;
-    }
-    $('#actualinput').focus();
-    $(document).scrollTop($(document).height());
-  }
 
   setInterval(function(){
           blinkcursor();
