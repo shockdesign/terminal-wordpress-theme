@@ -20,7 +20,6 @@ $(document).ready(function(){
   $('#defaultline').hide();
   $('.cursor').css('background','rgb(238, 238, 238)');  
   $link="";
-  $p=0; /*intro counter*/
   $msg=0;
   $msgcmd=0;
   $sendact=0;
@@ -32,10 +31,7 @@ $(document).ready(function(){
   %:  copyright
   ~ : bold close
   */
-  $intro="#";
-  $intro="This terminal is still under work. Start with '/BHelp' to learn the commands.";
-
-  $intro_run=1;
+  $intro="This terminal is still under work. Start with <b>help</b> to learn the commands.";
 
   function find_tab_completed_command(command) {
     if (!command)
@@ -88,6 +84,10 @@ $(document).ready(function(){
     return commands;
   }
 
+  $('#introdiv').html($intro).
+  $('#defaultline').show();
+
+/*
   $type=setInterval(function(){
             writeintro();
             },15);
@@ -117,6 +117,7 @@ $(document).ready(function(){
       }
       $p++;
   }
+*/
 
   function outputText(outputText) {
     $('#defaultline').before('<div class="line" id="line'+$l+'"></div>');
