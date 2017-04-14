@@ -134,7 +134,7 @@ $(document).ready(function(){
   function writeText(outputText) {
     var html = $('#line'+$l).html();
     if ($position < outputText.length - 1) {
-      var remainingText = outputText.substring($position, outputText.length - 1);
+      var remainingText = outputText.substring($position, outputText.length);
       var output = outputText[$position];
       /* Check that the remainingText doesn't match any special strings.. if so, then bang out the special bits of html */
       for (var i = 0; i < special_commands.length; i ++) {
