@@ -164,7 +164,6 @@ $(document).ready(function() {
   $sendact=0;
   $clr=0;
   $save=0;
-  $intro=;
 
   $('#introdiv').html("This terminal is still under work. Start with <b>help</b> to learn the commands.");
   showdefault();
