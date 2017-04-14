@@ -149,6 +149,28 @@ function runcommand($command) {
   outputText($html);
 }
 
+function unnull(){
+  for($i=0;$i<$history.length;$i++){
+    if($history[$i]=="" || $history[$i]==null || $history[$i]==undefined ){
+      for($j=$i;$j<$history.length;$j++){
+        $history[$j]=$history[$j+1];
+      }
+      $z--;
+    }
+  }
+  $z=$history.length;
+}
+
+function rehistory($cmd){
+  if($history.indexOf($cmd)>=0){
+    for($i=$history.indexOf($cmd);$i<$history.length;$i++){
+      $history[$i]=$history[$i+1];
+    }
+    $z--;
+  }
+} 
+
+
 $(document).ready(function() {
 
   $('#introdiv').html('');
@@ -290,27 +312,5 @@ $(document).ready(function() {
 
   $(document).keydown(function(e) {
     $('#actualinput').focus();
-  });
-
-  
-  function unnull(){
-    for($i=0;$i<$history.length;$i++){
-      if($history[$i]=="" || $history[$i]==null || $history[$i]==undefined ){
-        for($j=$i;$j<$history.length;$j++){
-          $history[$j]=$history[$j+1];
-        }
-        $z--;
-      }
-    }
-    $z=$history.length;
-  }
-
-  function rehistory($cmd){
-    if($history.indexOf($cmd)>=0){
-      for($i=$history.indexOf($cmd);$i<$history.length;$i++){
-        $history[$i]=$history[$i+1];
-      }
-      $z--;
-    }
-  } 
+  });  
 });
