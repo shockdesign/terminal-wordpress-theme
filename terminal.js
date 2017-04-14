@@ -130,6 +130,22 @@ $(document).ready(function(){
 
   function outputText(outputText) {
     $('#defaultline').before('<div class="line" id="line'+$l+'"></div>');
+    $('#line'+$l).html(outputText);
+    $('#commandcontainer').text("");
+    $('#actualinput').val("");
+    $l++;
+    if($clr==1){
+      $l=0;
+      $('.line').remove();
+      $('.commandline').remove();
+      $clr=0;
+    }
+    $('#actualinput').focus();
+    $(document).scrollTop($(document).height());
+  }
+
+  function outputTextWithMotion(outputText) {
+    $('#defaultline').before('<div class="line" id="line'+$l+'"></div>');
     $position = 0;
     $interval = setInterval(function() {
       writeText(outputText);
@@ -193,6 +209,8 @@ $(document).ready(function(){
 
     var extras = '';
 
+    var withMotion = false;
+
     if($command=='cancelsending'){
      $command2='Cancelled';
      $msg=0;
@@ -242,28 +260,18 @@ $(document).ready(function(){
           var page = pages[i];
           if ($command == page.command) {
             $html = page.page;
+            withMotion = true;
             break;
           }
         }
       }
     }
 
-    outputText($html);
-/*
-    $('#defaultline').before('<div class="line" id="line'+$l+'"></div>');
-    $('#line'+$l).html($html);
-    $('#commandcontainer').text("");
-    $('#actualinput').val("");
-    $l++;
-    if($clr==1){
-      $l=0;
-      $('.line').remove();
-      $('.commandline').remove();
-      $clr=0;
+    if (withMotion) {
+      outputTextWithMotion($html);
+    } else {
+      outputText($html);
     }
-    $('#actualinput').focus();
-    $(document).scrollTop($(document).height());
-    */
   }
 
   $(document).bind('keyup', function(e) {
