@@ -38,7 +38,9 @@ $(document).ready(function(){
   $intro_run=1;
 
   var special_commands = [
-    {type: 'match', string: '<script>location.reload();</script>'}
+    {type: 'match', string: '<script>location.reload();</script>'},
+    {type: 'match', string: "<div class='help'>"},
+    {type: 'match', string: '</div>'}
   ];
 
 
