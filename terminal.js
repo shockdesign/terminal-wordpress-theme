@@ -3,6 +3,8 @@
 /* Allowing you to hopefully use Wordpress as you feel like it and this should dynamically work with it */
 /* TODO: Remove all traces of JQuery as it'd be one less dependency */
 /* TODO: Theming? */
+/* TODO: Setup posts to be a directory */
+/* Maybe make this DOS themed? */
 
 function hidedefault(){
   $('#defaultline').hide();
@@ -20,7 +22,6 @@ $(document).ready(function(){
   $link="";
   $p=0; /*intro counter*/
   $msg=0;
-  $asciia=0;
   $msgcmd=0;
   $sendact=0;
   $clr=0;
@@ -117,6 +118,35 @@ $(document).ready(function(){
       $p++;
   }
 
+  function outputText(outputText) {
+    $position = 0;
+    $interval = setInterval(function() {
+      writeText(outputText);
+    }, 15);
+  }
+
+  function writeText(outputText) {
+    var html = $('#line'+$l).html();
+    if ($position < outputText.length - 1) {
+      $('#line'+$l).html(html + outputText[$position]);
+    } else if ($position >= outputText.length - 1) {
+      clearInterval($interval);
+      $('#defaultline').before('<div class="line" id="line'+$l+'"></div>');
+      $('#commandcontainer').text("");
+      $('#actualinput').val("");
+      $l++;
+      if($clr==1){
+        $l=0;
+        $('.line').remove();
+        $('.commandline').remove();
+        $clr=0;
+      }
+      $('#actualinput').focus();
+      $(document).scrollTop($(document).height());
+    }
+    $position ++;
+  }
+
   setInterval(function(){
           blinkcursor();
         },560);
@@ -135,7 +165,6 @@ $(document).ready(function(){
   var $history=new Array();
   
   function runcommand($command){
-    /*addcommand();*/
     unnull();
     rehistory($command);
     $history[$z]=$command;
@@ -200,12 +229,9 @@ $(document).ready(function(){
       }
     }
 
+    outputText($html);
+/*
     $('#defaultline').before('<div class="line" id="line'+$l+'"></div>');
-    if($asciia==1){
-      $html=$html.replace(/~/g,"&nbsp;");
-      $html=$html.replace(/#/g,'<br>');     
-      $asciia=0;
-    }
     $('#line'+$l).html($html);
     $('#commandcontainer').text("");
     $('#actualinput').val("");
@@ -218,7 +244,7 @@ $(document).ready(function(){
     }
     $('#actualinput').focus();
     $(document).scrollTop($(document).height());
-
+    */
   }
 
   $(document).bind('keyup', function(e) {
