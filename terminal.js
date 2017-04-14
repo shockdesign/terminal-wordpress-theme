@@ -104,8 +104,8 @@ $(document).ready(function() {
   */
   $intro="This terminal is still under work. Start with <b>help</b> to learn the commands.";
 
-  $('#introdiv').html($intro).
-  $('#defaultline').show();
+  $('#introdiv').html($intro);
+  showdefault();
 
 /*
   $type=setInterval(function(){
