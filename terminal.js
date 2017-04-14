@@ -6,6 +6,8 @@
 /* TODO: Setup posts to be a directory */
 /* Maybe make this DOS themed? */
 
+var $history = new Array();
+
 function hidedefault() {
   $('#defaultline').hide();
 }
@@ -203,10 +205,7 @@ $(document).ready(function() {
     else $('.cursor').css('background-color','rgb(238, 238, 238)');
   }
 
-  $l=0;
-
-  var $history=new Array();
-  
+  $l=0;  
 
   $(document).bind('keyup', function(e) {
     $existing=$('#commandcontainer').text();
