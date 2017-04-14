@@ -147,7 +147,7 @@ $(document).ready(function(){
         }
       }
       $('#line'+$l).html(html + output);
-    } else if ($position >= outputText.length - 1) {
+    } else if ($position >= outputText.length) {
       clearInterval($interval);
       $('#commandcontainer').text("");
       $('#actualinput').val("");
