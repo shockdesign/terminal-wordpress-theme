@@ -119,6 +119,7 @@ $(document).ready(function(){
   }
 
   function outputText(outputText) {
+    $('#defaultline').before('<div class="line" id="line'+$l+'"></div>');
     $position = 0;
     $interval = setInterval(function() {
       writeText(outputText);
@@ -131,7 +132,6 @@ $(document).ready(function(){
       $('#line'+$l).html(html + outputText[$position]);
     } else if ($position >= outputText.length - 1) {
       clearInterval($interval);
-      $('#defaultline').before('<div class="line" id="line'+$l+'"></div>');
       $('#commandcontainer').text("");
       $('#actualinput').val("");
       $l++;
