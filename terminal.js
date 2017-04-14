@@ -37,16 +37,6 @@ $(document).ready(function(){
 
   $intro_run=1;
 
-  var special_commands = [
-    "<script>location.reload();</script>",
-    "<div class='help'>",
-    "<div>",
-    "</div>",
-    "<b>",
-    "</b>"
-  ];
-
-
   function find_tab_completed_command(command) {
     if (!command)
       return command;
@@ -144,44 +134,6 @@ $(document).ready(function(){
     $(document).scrollTop($(document).height());
   }
 
-  function outputTextWithMotion(outputText) {
-    $('#defaultline').before('<div class="line" id="line'+$l+'"></div>');
-    $position = 0;
-    $interval = setInterval(function() {
-      writeText(outputText);
-    }, 15);
-  }
-
-  function writeText(outputText) {
-    var html = $('#line'+$l).html();
-    $('#commandcontainer').text("");
-    $('#actualinput').val("");
-    if ($position < outputText.length - 1) {
-      var remainingText = outputText.substring($position, outputText.length);
-      var output = outputText[$position];
-      /* Check that the remainingText doesn't match any special strings.. if so, then bang out the special bits of html */
-      for (var i = 0; i < special_commands.length; i ++) {
-        if (remainingText.startsWith(special_commands[i])) {
-          output = special_commands[i];
-          $position += output.length - 1;
-        }
-      }
-      $('#line'+$l).html(html + output);
-    } else if ($position >= outputText.length) {
-      clearInterval($interval);
-      $l++;
-      if($clr==1){
-        $l=0;
-        $('.line').remove();
-        $('.commandline').remove();
-        $clr=0;
-      }
-      $('#actualinput').focus();
-      $(document).scrollTop($(document).height());
-    }
-    $position ++;
-  }
-
   setInterval(function(){
           blinkcursor();
         },560);
@@ -208,8 +160,6 @@ $(document).ready(function(){
     $command=$command.toLowerCase();
 
     var extras = '';
-
-    var withMotion = false;
 
     if($command=='cancelsending'){
      $command2='Cancelled';
@@ -260,18 +210,13 @@ $(document).ready(function(){
           var page = pages[i];
           if ($command == page.command) {
             $html = page.page;
-            withMotion = true;
             break;
           }
         }
       }
     }
 
-    if (withMotion) {
-      outputTextWithMotion($html);
-    } else {
-      outputText($html);
-    }
+    outputText($html);
   }
 
   $(document).bind('keyup', function(e) {
