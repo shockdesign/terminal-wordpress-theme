@@ -154,6 +154,8 @@ $(document).ready(function(){
 
   function writeText(outputText) {
     var html = $('#line'+$l).html();
+    $('#commandcontainer').text("");
+    $('#actualinput').val("");
     if ($position < outputText.length - 1) {
       var remainingText = outputText.substring($position, outputText.length);
       var output = outputText[$position];
@@ -167,8 +169,6 @@ $(document).ready(function(){
       $('#line'+$l).html(html + output);
     } else if ($position >= outputText.length) {
       clearInterval($interval);
-      $('#commandcontainer').text("");
-      $('#actualinput').val("");
       $l++;
       if($clr==1){
         $l=0;
