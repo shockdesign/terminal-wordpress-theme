@@ -84,21 +84,16 @@ function outputText(outputText) {
 }
 
 function runcommand($command) {
-  unnull();
-  rehistory($command);
-  $history[$z]=$command;
-  $z++;
-  $x=$z;
   $command=$command.toLowerCase();
 
   var extras = '';
-
+/*
   if($command=='cancelsending'){
    $command2='Cancelled';
    $msg=0;
    $msgcmd=0; 
-  }
-  else if ($command.startsWith("print")) {
+  } */
+  if ($command.startsWith("print")) {
     var results = $command.split(':');
     $command = "print";
     $command2 = results[1];
@@ -106,9 +101,16 @@ function runcommand($command) {
       extras +=  results[i] + "&#09;";
     }
   }
-  else $command2=$command;
+  else {
+    $command2=$command;
+    unnull();
+    rehistory($command);
+    $history[$z]=$command;
+    $z++;
+    $x=$z;
+  }
   $('#defaultline').before('<div class="commandline" id="commandline'+$l+'"><span class="defaulttext">~ </span>'+$command2+'</div>');
-  if($msg==0){
+/*  if($msg==0){ */
     switch($command){
       case 'help':
       $html=show_available_commands();
@@ -120,7 +122,7 @@ function runcommand($command) {
 
       case 'clear':
       $clr=1;
-      $msg=0;
+      /*$msg=0;*/
       $html="";
       break;
 
@@ -146,7 +148,7 @@ function runcommand($command) {
         }
       }
     }
-  }
+  /*}*/
 
   outputText($html);
 }
@@ -183,8 +185,10 @@ $(document).ready(function() {
   hidedefault();
   $('.cursor').css('background','rgb(238, 238, 238)');  
   $link="";
+/*
   $msg=0;
   $msgcmd=0;
+  */
   $sendact=0;
   $clr=0;
   $save=0;
@@ -233,19 +237,20 @@ $(document).ready(function() {
         return false;
       }
     }
+    /*
     if(e.altKey && (e.which == 83)) {
       
-      /*send msg if $msg==1 which is activated when message command is typed*/
+      //send msg if $msg==1 which is activated when message command is typed
         if($msg==1){
           $sendact=1;
          runcommand($existing);
       }
 
-     /*   return false; */
+     //   return false;
     }
     else if(e.ctrlKey && (e.which == 82)) {
      e.preventDefault();
-      /*send msg if $msg==1 which is activated when message command is typed*/
+      //send msg if $msg==1 which is activated when message command is typed
         if($msg==1){
         if (confirm('Refreshing the Page with Discard Message!!') == true) {
               window.reload();
@@ -255,19 +260,19 @@ $(document).ready(function() {
           }
       }
 
-     /*   return false;*/
+     //   return false;
     }
     else if(e.altKey && (e.which == 67)) {
       
-      /*send msg if $msg==1 which is activated when message command is typed*/
+      //send msg if $msg==1 which is activated when message command is typed
         if($msg==1){
           $msg=0;
          runcommand('cancelsending');
       }
 
-     /*  return false;*/
-    }
-    else if(e.which==13){
+     //  return false;
+    }*/
+    if(e.which==13){
       runcommand($existing);
       $('#actualinput').focus();
     }
