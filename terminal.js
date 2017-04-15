@@ -84,15 +84,10 @@ function outputText(outputText) {
 }
 
 function runcommand($command) {
+  unnull();
   $command=$command.toLowerCase();
 
   var extras = '';
-/*
-  if($command=='cancelsending'){
-   $command2='Cancelled';
-   $msg=0;
-   $msgcmd=0; 
-  } */
   if ($command.startsWith("print")) {
     var results = $command.split(':');
     $command = "print";
@@ -103,52 +98,48 @@ function runcommand($command) {
   }
   else {
     $command2=$command;
-    unnull();
     rehistory($command);
     $history[$z]=$command;
     $z++;
     $x=$z;
   }
   $('#defaultline').before('<div class="commandline" id="commandline'+$l+'"><span class="defaulttext">~ </span>'+$command2+'</div>');
-/*  if($msg==0){ */
-    switch($command){
-      case 'help':
-      $html=show_available_commands();
-      break;
+  switch($command){
+    case 'help':
+    $html=show_available_commands();
+    break;
 
-      case 'xyzzy':
-      $html="Nothing happens";
-      break;
+    case 'xyzzy':
+    $html="Nothing happens";
+    break;
 
-      case 'clear':
-      $clr=1;
-      /*$msg=0;*/
-      $html="";
-      break;
+    case 'clear':
+    $clr=1;
+    $html="";
+    break;
 
-      case '':
-      $html="";
-      break;
+    case '':
+    $html="";
+    break;
 
-      case 'print':
-      $html = extras;
-      break;
+    case 'print':
+    $html = extras;
+    break;
 
-      case 'reboot':
-      $html="The system is going down for reboot NOW!<script>location.reload();</script>";
-      break;
+    case 'reboot':
+    $html="The system is going down for reboot NOW!<script>location.reload();</script>";
+    break;
 
-      default :
-      $html="\'"+$command+"\' Is not a known Command. But that might change the next time you are here. Use '<b>help</b>' for the list of available commands";
-      for (var i = 0; i < pages.length; i ++) {
-        var page = pages[i];
-        if ($command == page.command) {
-          $html = page.page;
-          break;
-        }
+    default :
+    $html="\'"+$command+"\' Is not a known Command. But that might change the next time you are here. Use '<b>help</b>' for the list of available commands";
+    for (var i = 0; i < pages.length; i ++) {
+      var page = pages[i];
+      if ($command == page.command) {
+        $html = page.page;
+        break;
       }
     }
-  /*}*/
+  }
 
   outputText($html);
 }
@@ -185,10 +176,6 @@ $(document).ready(function() {
   hidedefault();
   $('.cursor').css('background','rgb(238, 238, 238)');  
   $link="";
-/*
-  $msg=0;
-  $msgcmd=0;
-  */
   $sendact=0;
   $clr=0;
   $save=0;
@@ -237,41 +224,6 @@ $(document).ready(function() {
         return false;
       }
     }
-    /*
-    if(e.altKey && (e.which == 83)) {
-      
-      //send msg if $msg==1 which is activated when message command is typed
-        if($msg==1){
-          $sendact=1;
-         runcommand($existing);
-      }
-
-     //   return false;
-    }
-    else if(e.ctrlKey && (e.which == 82)) {
-     e.preventDefault();
-      //send msg if $msg==1 which is activated when message command is typed
-        if($msg==1){
-        if (confirm('Refreshing the Page with Discard Message!!') == true) {
-              window.reload();
-          } else {
-              e.preventDefault();
-              return false;
-          }
-      }
-
-     //   return false;
-    }
-    else if(e.altKey && (e.which == 67)) {
-      
-      //send msg if $msg==1 which is activated when message command is typed
-        if($msg==1){
-          $msg=0;
-         runcommand('cancelsending');
-      }
-
-     //  return false;
-    }*/
     if(e.which==13){
       runcommand($existing);
       $('#actualinput').focus();
