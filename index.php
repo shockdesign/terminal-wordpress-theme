@@ -30,8 +30,8 @@
        var frontpage = "This terminal is still under progress.";
        <?php
         if (get_option('show_on_front') == "page") {
-          int postId = (int)get_option('page_on_front');
-          $pageHtml = get_post(postId);
+          $postId = (int)get_option('page_on_front');
+          $pageHtml = get_post($postId);
           ?>
           frontpage = "<?php echo $pageHtml; ?>";
           <?php
