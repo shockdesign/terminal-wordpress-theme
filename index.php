@@ -31,7 +31,11 @@
        <?php
         if (get_option('show_on_front') == "page") {
           $postId = (int)get_option('page_on_front');
-          $pageHtml = get_post($postId);
+          foreach ($pages as $key => $page) {
+            if ($page->ID == $postId) {
+              $pageHtml = $page->post_content;
+            }
+          }
           ?>
           frontpage = "<?php echo $pageHtml; ?>";
           <?php
