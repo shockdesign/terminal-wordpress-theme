@@ -180,7 +180,7 @@ $(document).ready(function() {
   $clr=0;
   $save=0;
 
-  $('#introdiv').html("This terminal is still under work. Start with <b>help</b> to learn the commands.");
+  $('#introdiv').html(frontpage + "<br />Start with <b>help</b> to learn the commands.");
   showdefault();
 
   setInterval(function(){

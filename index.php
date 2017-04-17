@@ -27,6 +27,15 @@
       <?php
         }
        ?>
+       var frontpage = "This terminal is still under progress.";
+       <?php
+        if get_option('show_on_front') == "page" {
+          $pageHtml = get_option('page_on_front');
+          ?>
+          frontpage = "<?php echo $pageHtml; ?>";
+          <?php
+        }
+        ?>
     </script>
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/terminal.js"></script>
     <link rel='stylesheet' href='<?php bloginfo('template_directory'); ?>/style.css' type='text/css' media='all' />
