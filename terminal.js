@@ -9,13 +9,12 @@
 var $history = new Array();
 
 var $commands = [
-  {cmd: 'help',   hidden: false},
-  {cmd: 'cls',    hidden: false},
-  {cmd: 'dir',    hidden: false},
-  {cmd: 'date',   hidden: false},
-  {cmd: 'more',   hidden: false},
-  {cmd: 'type',   hidden: false},
-  {cmd: 'xyzzy',  hidden: true}
+  {cmd: 'help',   hidden: false,    clear: false,   output: show_available_commands()},
+  {cmd: 'cls',    hidden: false,    clear: true,    output: ''},
+  {cmd: 'dir',    hidden: false,    clear: false,   output: ''},
+  {cmd: 'date',   hidden: false,    clear: false,   output: ''},
+  {cmd: 'type',   hidden: false,    clear: false,   output: ''},
+  {cmd: 'xyzzy',  hidden: true,     clear: false,   output: 'Nothing happens'}
 ];
 
 function hidedefault() {
