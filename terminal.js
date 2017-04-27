@@ -109,7 +109,7 @@ function runcommand($command) {
     $z++;
     $x=$z;
   }
-  $('#defaultline').before('<div class="commandline" id="commandline'+$l+'"><span class="defaulttext">C:\> </span>'+$command2+'</div>');
+  $('#defaultline').before('<div class="commandline" id="commandline'+$l+'"><span class="defaulttext">C:\\> </span>'+$command2+'</div>');
   switch($command){
     case 'help':
     $html=show_available_commands();
