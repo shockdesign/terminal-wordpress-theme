@@ -9,12 +9,13 @@
 var $history = new Array();
 
 var $commands = [
-  {cmd: 'help'},
-  {cmd: 'cls'},
-  {cmd: 'dir'},
-  {cmd: 'date'},
-  {cmd: 'more'},
-  {cmd: 'type'}
+  {cmd: 'help',   hidden: false},
+  {cmd: 'cls',    hidden: false},
+  {cmd: 'dir',    hidden: false},
+  {cmd: 'date',   hidden: false},
+  {cmd: 'more',   hidden: false},
+  {cmd: 'type',   hidden: false},
+  {cmd: 'xyzzy',  hidden: true}
 ];
 
 function hidedefault() {
@@ -39,8 +40,8 @@ function find_tab_completed_command(command) {
   var results = [];
   for (var i = 0; i < $commands.length; i ++) {
     cmd = $commands[i];
-    if (cmd.cmd.startsWith(command)) {
-      results.push($commands[i]);
+    if (cmd.cmd.startsWith(command) && cmd.hidden == false) {
+      results.push(cmd.cmd);
     }
   }
 
