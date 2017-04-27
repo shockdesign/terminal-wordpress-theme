@@ -57,14 +57,14 @@
 </head>
 <body>
   <noscript>
-    <div class="line"><span class="defaulttext">~ </span> It looks like javascript has been disabled on your browser. This website runs on javascript for user experience. Please enable it and refresh the website.</div><br>
+    <div class="line"><span class="defaulttext">C:\> </span> It looks like javascript has been disabled on your browser. This website runs on javascript for user experience. Please enable it and refresh the website.</div><br>
   </noscript>
   <div id="introdiv">
-      <span class="defaulttext">~  </span><span id="commandcontainer">There have been issues with the scripts required. Please refresh the browser to try again.</span>
+      <span class="defaulttext">C:\> </span><span id="commandcontainer">There have been issues with the scripts required. Please refresh the browser to try again.</span>
   </div>
   <div id="commands">
     <div id="defaultline">
-      <span class="defaulttext">~  </span><span id="commandcontainer"></span><span class="cursor"></span><input type="text" id="actualinput">
+      <span class="defaulttext">C:\> </span><span id="commandcontainer"></span><span class="cursor"></span><input type="text" id="actualinput">
     </div>
   </div>
 </body>
