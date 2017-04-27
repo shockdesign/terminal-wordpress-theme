@@ -8,6 +8,12 @@
 
 var $history = new Array();
 
+var $commands = [
+  'help' => {},
+  'cls' => {},
+  'dir' => {}
+];
+
 function hidedefault() {
   $('#defaultline').hide();
 }
@@ -20,7 +26,7 @@ function find_tab_completed_command(command) {
   if (!command)
     return command;
 
-  var commands = ['help', 'clear', 'reboot'];
+  var commands = ['help', 'cls', 'dir', 'date', 'more', 'type'];
   for (var i = 0; i < pages.length; i ++) {
     var page = pages[i];
     commands.push(page.command);
@@ -42,11 +48,7 @@ function find_tab_completed_command(command) {
 
   console.log("Too many matching results or no results found");
   if (results.length > 0) {
-    var response = "print:" + command + ":";
-    for (var i = 0; i < results.length - 1; i ++) {
-      response += results[i] + ":";
-    }
-    response += results[results.length - 1];
+    var response = "print:" + command + ":" + results.join(':');
     runcommand(response);
   }
 
@@ -103,7 +105,7 @@ function runcommand($command) {
     $z++;
     $x=$z;
   }
-  $('#defaultline').before('<div class="commandline" id="commandline'+$l+'"><span class="defaulttext">~ </span>'+$command2+'</div>');
+  $('#defaultline').before('<div class="commandline" id="commandline'+$l+'"><span class="defaulttext">C:\> </span>'+$command2+'</div>');
   switch($command){
     case 'help':
     $html=show_available_commands();
