@@ -9,12 +9,12 @@
 var $history = new Array();
 
 var $commands = [
-  'help' => {},
-  'cls' => {},
-  'dir' => {},
-  'date' => {},
-  'more' => {},
-  'type' => {}
+  {cmd: 'help'},
+  {cmd: 'cls'},
+  {cmd: 'dir'},
+  {cmd: 'date'},
+  {cmd: 'more'},
+  {cmd: 'type'}
 ];
 
 function hidedefault() {
@@ -38,7 +38,8 @@ function find_tab_completed_command(command) {
   /* Loop through the list of commands and find if there is enough information for a single match */
   var results = [];
   for (var i = 0; i < $commands.length; i ++) {
-    if ($commands[i].startsWith(command)) {
+    cmd = $commands[i];
+    if (cmd.cmd.startsWith(command)) {
       results.push($commands[i]);
     }
   }
