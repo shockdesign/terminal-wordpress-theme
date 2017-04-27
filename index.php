@@ -18,6 +18,7 @@
     <link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>
+      /* Turn this into proper ajax requests */
       var pages = [];
       <?php
        $pages = get_pages();
