@@ -11,7 +11,10 @@ var $history = new Array();
 var $commands = [
   'help' => {},
   'cls' => {},
-  'dir' => {}
+  'dir' => {},
+  'date' => {},
+  'more' => {},
+  'type' => {}
 ];
 
 function hidedefault() {
@@ -26,17 +29,17 @@ function find_tab_completed_command(command) {
   if (!command)
     return command;
 
-  var commands = ['help', 'cls', 'dir', 'date', 'more', 'type'];
-  for (var i = 0; i < pages.length; i ++) {
-    var page = pages[i];
-    commands.push(page.command);
-  }
+  // var commands = ['help', 'cls', 'dir', 'date', 'more', 'type'];
+  // for (var i = 0; i < pages.length; i ++) {
+  //   var page = pages[i];
+  //   commands.push(page.command);
+  // }
 
   /* Loop through the list of commands and find if there is enough information for a single match */
   var results = [];
-  for (var i = 0; i < commands.length; i ++) {
-    if (commands[i].startsWith(command)) {
-      results.push(commands[i]);
+  for (var i = 0; i < $commands.length; i ++) {
+    if ($commands[i].startsWith(command)) {
+      results.push($commands[i]);
     }
   }
 
