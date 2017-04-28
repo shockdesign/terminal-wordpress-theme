@@ -278,7 +278,7 @@ $(document).ready(function() {
     var code = e.keyCode || e.which;
     if (code == '9') {
       var results = find_tab_completed_command(existing);
-      if (results.results > 0) {
+      if (results.results.length > 0) {
         $('#defaultline').before('<div class="commandline" id="commandline'+$l+'"><span class="defaulttext">C:\\> </span>'+results.command+'</div>');
         outputText(results.results.join("&#09;"));
       } else {
