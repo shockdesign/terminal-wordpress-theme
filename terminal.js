@@ -8,6 +8,11 @@
 
 var $history = new Array();
 
+var $startup = [
+  'Starting SD-DOS...',
+  ''
+];
+
 var $commands = [
   {cmd: 'help',   hidden: false,    clear: false,   type: 'function',   output: show_available_commands,    help: 'Lists all available commands'},
   {cmd: 'cls',    hidden: false,    clear: true,    type: 'print',      output: '',                         help: 'Clear the screen'},
@@ -147,6 +152,21 @@ function rehistory($cmd){
 $(document).ready(function() {
 
   $('#introdiv').html('');
+
+  $i=0;
+  var interval = setInterval(function(){
+                              updateIntro();
+                            }, 500);
+  function updateIntro() {
+    if ($i >= $startup.length) {
+      clearInterval(interval);
+      return;
+    }
+    var html = $('#introdiv').html();
+    html += $startup[$i] + "<br />";
+    $('#introdiv').html(html);
+    $i ++;
+  }
 
   $z=0;
   $x=0;
