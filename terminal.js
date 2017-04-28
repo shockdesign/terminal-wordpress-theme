@@ -192,8 +192,6 @@ $(document).ready(function() {
   $clr=0;
   $save=0;
 
-  showdefault();
-
   setInterval(function(){
           blinkcursor();
         },560);
@@ -213,6 +211,7 @@ $(document).ready(function() {
   function updateIntro() {
     if ($l >= $startup.length) {
       clearInterval(interval);
+      showdefault();
       return;
     }
     outputText($startup[$l] + "<br />");
