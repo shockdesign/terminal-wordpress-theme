@@ -9,7 +9,7 @@
 var $history = new Array();
 
 var $commands = [
-  {cmd: 'help',   hidden: false,    clear: false,   type: 'function',   output: 'show_available_commands'},
+  {cmd: 'help',   hidden: false,    clear: false,   type: 'function',   output: show_available_commands},
   {cmd: 'cls',    hidden: false,    clear: true,    type: 'print',      output: ''},
   {cmd: 'dir',    hidden: false,    clear: false,   type: 'print',      output: ''},
   {cmd: 'date',   hidden: false,    clear: false,   type: 'print',      output: ''},
