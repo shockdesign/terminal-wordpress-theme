@@ -29,12 +29,6 @@ function find_tab_completed_command(command) {
   if (!command)
     return command;
 
-  // var commands = ['help', 'cls', 'dir', 'date', 'more', 'type'];
-  // for (var i = 0; i < pages.length; i ++) {
-  //   var page = pages[i];
-  //   commands.push(page.command);
-  // }
-
   /* Loop through the list of commands and find if there is enough information for a single match */
   var results = [];
   for (var i = 0; i < $commands.length; i ++) {
@@ -44,19 +38,26 @@ function find_tab_completed_command(command) {
     }
   }
 
-  if (results.length == 1) {
-    /* One result, lets use it */
-    console.log("Found tab result: " + results[0]);
-    return results[0];
-  }
+  return {command: command, results: results};
 
-  console.log("Too many matching results or no results found");
-  if (results.length > 0) {
-    var response = "print:" + command + ":" + results.join(':');
-    runcommand(response);
-  }
+  // if (results.length == 1) {
+  //   /* One result, lets use it */
+  //   console.log("Found tab result: " + results[0]);
+  //   return results[0];
+  // }
 
-  return command;
+  // console.log("Too many matching results or no results found");
+  // if (results.length > 0) {
+
+  //   var response = "print " + command + " " + results.join(' ');
+  //   runcommand(response);
+  // }
+
+  // return command;
+}
+
+function print_parameters(parameters) {
+  return parameters.join("&#09;");
 }
 
 function show_available_commands(parameters) {
@@ -277,7 +278,13 @@ $(document).ready(function() {
     var code = e.keyCode || e.which;
     if (code == '9') {
       var results = find_tab_completed_command(existing);
-      $('#actualinput').val(results);
+      if (results.results > 0) {
+        $('#defaultline').before('<div class="commandline" id="commandline'+$l+'"><span class="defaulttext">C:\\> </span>'+results.command+'</div>');
+        outputText(results.results.join("&#09;"));
+      } else {
+        $('#actualinput').val(results.command);
+      }
+
       return false;
     }
   });
