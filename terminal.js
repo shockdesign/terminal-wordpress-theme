@@ -100,7 +100,7 @@ function show_date(parameters) {
 
 function outputText(outputText) {
   $('#defaultline').before('<div class="line" id="line'+$l+'"></div>');
-  $('#line'+$l).html(outputText);
+  $('#line'+$l).html(outputText.replace(' ', '&nbsp;'));
   $('#commandcontainer').text("");
   $('#actualinput').val("");
   $l++;

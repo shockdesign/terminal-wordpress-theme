@@ -30,7 +30,6 @@ body{
 .commandline,
 #defaultline{
   margin-top: 20px;
-  word-spacing: 0.25em;
 }
 
 b {
