@@ -69,7 +69,7 @@ function find_tab_completed_command(command) {
 }
 
 function clear_screen(parameters) {
-  $l=0;
+  $line=0;
   $('.line').remove();
   $('.commandline').remove();
   return '';
@@ -109,11 +109,11 @@ function show_date(parameters) {
 }
 
 function outputText(outputText) {
-  $('#defaultline').before('<div class="line" id="line'+$l+'"></div>');
-  $('#line'+$l).html(outputText.replace(/ /g, '&nbsp;'));
+  $('#defaultline').before('<div class="line" id="line'+$line+'"></div>');
+  $('#line'+$line).html(outputText.replace(/ /g, '&nbsp;'));
   $('#commandcontainer').text("");
   $('#actualinput').val("");
-  $l++;
+  $line++;
   $('#actualinput').focus();
   $(document).scrollTop($(document).height());
 }
@@ -128,7 +128,7 @@ function runcommand($command) {
   $z++;
   $x=$z;
   // }
-  $('#defaultline').before('<div class="commandline" id="commandline'+$l+'"><span class="defaulttext">C:\\></span>'+$command2+'</div>');
+  $('#defaultline').before('<div class="commandline" id="commandline'+$line+'"><span class="defaulttext">C:\\></span>'+$command2+'</div>');
 
   var given_commands = $command.split(" ");
   var command = given_commands[0];
@@ -186,8 +186,7 @@ $(document).ready(function() {
 
   $('#introdiv').html('');
 
-  $l=0;
-
+  $line=0;
   $z=0;
   $x=0;
   $('#actualinput').focus();
@@ -211,12 +210,12 @@ $(document).ready(function() {
                               updateIntro();
                             }, 560);
   function updateIntro() {
-    if ($l >= $startup.length) {
+    if ($line >= $startup.length) {
       clearInterval(interval);
       showdefault();
       return;
     }
-    outputText($startup[$l]+"<br/>");
+    outputText($startup[$line]+"<br/>");
   }
 
   $(document).bind('keyup', function(e) {
@@ -260,7 +259,7 @@ $(document).ready(function() {
     if (code == '9') {
       var results = find_tab_completed_command(existing);
       if (results.results.length > 1) {
-        $('#defaultline').before('<div class="commandline" id="commandline'+$l+'"><span class="defaulttext">C:\\> </span>'+results.command+'</div>');
+        $('#defaultline').before('<div class="commandline" id="commandline'+$line+'"><span class="defaulttext">C:\\></span>'+results.command+'</div>');
         outputText(results.results.join("&#09;"));
       } else {
         $('#actualinput').val(results.command);
