@@ -100,7 +100,7 @@ function show_date(parameters) {
 
 function outputText(outputText) {
   $('#defaultline').before('<div class="line" id="line'+$l+'"></div>');
-  $('#line'+$l).html(outputText.replace(' ', '&nbsp;'));
+  $('#line'+$l).html(outputText.replace(" ", "&nbsp;"));
   $('#commandcontainer').text("");
   $('#actualinput').val("");
   $l++;
@@ -206,7 +206,7 @@ $(document).ready(function() {
       showdefault();
       return;
     }
-    outputText($startup[$l] + "<br />");
+    outputText($startup[$l]);
   }
 
   $(document).bind('keyup', function(e) {
