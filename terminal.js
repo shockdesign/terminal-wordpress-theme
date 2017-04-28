@@ -278,11 +278,14 @@ $(document).ready(function() {
     var code = e.keyCode || e.which;
     if (code == '9') {
       var results = find_tab_completed_command(existing);
-      if (results.results.length > 0) {
+      if (results.results.length > 1) {
         $('#defaultline').before('<div class="commandline" id="commandline'+$l+'"><span class="defaulttext">C:\\> </span>'+results.command+'</div>');
         outputText(results.results.join("&#09;"));
       } else {
         $('#actualinput').val(results.command);
+        if (results.results.length == 1) {
+          $('#actualinput').val(results.results.first);
+        }
       }
 
       return false;
