@@ -36,12 +36,12 @@ var $startup = [
 ];
 
 var $commands = [
-  {cmd: 'help',   hidden: false,    type: 'function',   output: show_available_commands,    help: 'Lists all available commands'},
-  {cmd: 'cls',    hidden: false,    type: 'function',   output: clear_screen,               help: 'Clear the screen'},
-  {cmd: 'dir',    hidden: false,    type: 'print',      output: '',                         help: 'Show directories or files in current directory'},
-  {cmd: 'date',   hidden: false,    type: 'function',   output: show_date,                  help: 'Display the current date and time'},
-  {cmd: 'type',   hidden: false,    type: 'print',      output: '',                         help: 'Display a given file'},
-  {cmd: 'xyzzy',  hidden: true,     type: 'print',      output: 'Nothing happens',          help: 'Nothing happens'}
+  {cmd: 'help',   hidden: false,    type: 'function',   output: show_help,              help: 'Lists all available commands'},
+  {cmd: 'cls',    hidden: false,    type: 'function',   output: clear_screen,           help: 'Clear the screen'},
+  {cmd: 'dir',    hidden: false,    type: 'print',      output: '',                     help: 'Show directories or files in current directory'},
+  {cmd: 'date',   hidden: false,    type: 'function',   output: show_date,              help: 'Display the current date and time'},
+  {cmd: 'type',   hidden: false,    type: 'print',      output: '',                     help: 'Display a given file'},
+  {cmd: 'xyzzy',  hidden: true,     type: 'print',      output: 'Nothing happens',      help: 'Nothing happens'}
 ];
 
 function hidedefault() {
@@ -79,18 +79,28 @@ function print_parameters(parameters) {
   return parameters.join("&#09;");
 }
 
-function show_available_commands(parameters) {
-  var print = "<div class='help'>";
+function show_help(parameters) {
+  if (parameters.length == 0) {
+    // Show all commands
+    var print = '';
+    for (var i = 0; i < $commands.length; i ++) {
+      cmd = $commands[i];
+      if (cmd.hidden == false) {
+        print += cmd.cmd + "&#09;";
+      }
+    }
+    return print;
+  }
 
+  var help_command = parameters[0];
   for (var i = 0; i < $commands.length; i ++) {
     cmd = $commands[i];
-    if (cmd.hidden == false) {
-      print += "<div><b>" + cmd.cmd + "</b>" + cmd.help + "</div>";
+    if (cmd.hidden == false && cmd.cmd == help_command) {
+      return cmd.help;
     }
   }
 
-  print += "</div>";
-  return print;
+  return "No help found for this command";
 }
 
 function show_date(parameters) {
