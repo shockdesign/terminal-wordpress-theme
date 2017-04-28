@@ -9,12 +9,12 @@
 var $history = new Array();
 
 var $commands = [
-  {cmd: 'help',   hidden: false,    clear: false,   type: 'function',   output: show_available_commands},
-  {cmd: 'cls',    hidden: false,    clear: true,    type: 'print',      output: ''},
-  {cmd: 'dir',    hidden: false,    clear: false,   type: 'print',      output: ''},
-  {cmd: 'date',   hidden: false,    clear: false,   type: 'print',      output: ''},
-  {cmd: 'type',   hidden: false,    clear: false,   type: 'print',      output: ''},
-  {cmd: 'xyzzy',  hidden: true,     clear: false,   type: 'print',      output: 'Nothing happens'}
+  {cmd: 'help',   hidden: false,    clear: false,   type: 'function',   output: show_available_commands,    help: 'Lists all available commands'},
+  {cmd: 'cls',    hidden: false,    clear: true,    type: 'print',      output: '',                         help: 'Clear the screen'},
+  {cmd: 'dir',    hidden: false,    clear: false,   type: 'print',      output: '',                         help: 'Show directories or files in current directory'},
+  {cmd: 'date',   hidden: false,    clear: false,   type: 'print',      output: '',                         help: 'Display the current date and time'},
+  {cmd: 'type',   hidden: false,    clear: false,   type: 'print',      output: '',                         help: 'Display a given file'},
+  {cmd: 'xyzzy',  hidden: true,     clear: false,   type: 'print',      output: 'Nothing happens',          help: 'Nothing happens'}
 ];
 
 function hidedefault() {
@@ -46,17 +46,17 @@ function print_parameters(parameters) {
 }
 
 function show_available_commands(parameters) {
-  var commands="<div class='help'>"+
-      "<div>Interface Commands</div>"+
-      "<div><b>help</b>Lists all available commands</div>"+
-      "<div><b>clear</b>Clear the screen</div>"+
-      "<div><b>reboot</b>Reboot this system</div>";
-  for (var i = 0; i < pages.length; i ++) {
-    var page = pages[i];
-    commands += "<div><b>" + page.command + "</b>" + page.title + "</div>";
+  var print = "<div class='help'";
+
+  for (var i = 0; i < $commands.length; i ++) {
+    cmd = $commands[i];
+    if (cmd.hidden == false) {
+      print += "<div><b>" + cmd.cmd + "</b>" + cmd.help + "</div>";
+    }
   }
-  commands +="</div>";
-  return commands;
+
+  print += "</div>";
+  return print;
 }
 
 function outputText(outputText) {
