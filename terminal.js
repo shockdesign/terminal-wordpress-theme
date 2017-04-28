@@ -87,7 +87,7 @@ function show_available_commands(parameters) {
 }
 
 function show_date(parameters) {
-  var date = new Date("now");
+  var date = new Date();
   return "Current date is " + date;
 }
 
