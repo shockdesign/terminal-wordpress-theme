@@ -36,12 +36,12 @@ var $startup = [
 ];
 
 var $commands = [
-  {cmd: 'help',   hidden: false,    clear: false,   type: 'function',   output: show_available_commands,    help: 'Lists all available commands'},
-  {cmd: 'cls',    hidden: false,    clear: true,    type: 'function',   output: clear_screen,               help: 'Clear the screen'},
-  {cmd: 'dir',    hidden: false,    clear: false,   type: 'print',      output: '',                         help: 'Show directories or files in current directory'},
-  {cmd: 'date',   hidden: false,    clear: false,   type: 'function',   output: show_date,                  help: 'Display the current date and time'},
-  {cmd: 'type',   hidden: false,    clear: false,   type: 'print',      output: '',                         help: 'Display a given file'},
-  {cmd: 'xyzzy',  hidden: true,     clear: false,   type: 'print',      output: 'Nothing happens',          help: 'Nothing happens'}
+  {cmd: 'help',   hidden: false,    type: 'function',   output: show_available_commands,    help: 'Lists all available commands'},
+  {cmd: 'cls',    hidden: false,    type: 'function',   output: clear_screen,               help: 'Clear the screen'},
+  {cmd: 'dir',    hidden: false,    type: 'print',      output: '',                         help: 'Show directories or files in current directory'},
+  {cmd: 'date',   hidden: false,    type: 'function',   output: show_date,                  help: 'Display the current date and time'},
+  {cmd: 'type',   hidden: false,    type: 'print',      output: '',                         help: 'Display a given file'},
+  {cmd: 'xyzzy',  hidden: true,     type: 'print',      output: 'Nothing happens',          help: 'Nothing happens'}
 ];
 
 function hidedefault() {
@@ -199,7 +199,7 @@ $(document).ready(function() {
 
   var interval = setInterval(function(){
                               updateIntro();
-                            }, 500);
+                            }, 560);
   function updateIntro() {
     if ($l >= $startup.length) {
       clearInterval(interval);
@@ -208,8 +208,6 @@ $(document).ready(function() {
     }
     outputText($startup[$l] + "<br />");
   }
-
-  // $('#introdiv').html(frontpage + "<br />Start with <b>help</b> to learn the commands.");
 
   $(document).bind('keyup', function(e) {
     $existing=$('#commandcontainer').text();
