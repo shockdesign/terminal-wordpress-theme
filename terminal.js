@@ -46,7 +46,7 @@ function print_parameters(parameters) {
 }
 
 function show_available_commands(parameters) {
-  var print = "<div class='help'";
+  var print = "<div class='help'>";
 
   for (var i = 0; i < $commands.length; i ++) {
     cmd = $commands[i];
