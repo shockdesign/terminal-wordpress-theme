@@ -10,6 +10,28 @@ var $history = new Array();
 
 var $startup = [
   'Starting SD-DOS...',
+  '',
+  'This driver provided by Oak Technology. Inc..',
+  'OTI-91X ATAPI CD-ROM device driver, Rev D91XV352',
+  '(C)Copyright Oak Technology Inc. 1987-1997',
+  '  Device Name        : MSCD0001',
+  '  Transfer Mode      : Programmed I/O',
+  '  Number of drives   : 1',
+  '',
+  'MSCDEX Version 2.23',
+  'Copyright (C) Microsoft Corp. 1986-1993. All rights reserved.',
+  '       Drive D: = Driver MSCD0001 unit 0',
+  '',
+  'CPUidle for DOS V2.10  [Build 0077]',
+  'Copyright (C) by Marton Balog, 1998.',
+  '',
+  'DETECTING...',
+  '[Processor]:    Unknown Intel.',
+  '[Power/Man]:    APM V1.2 [Enabled].',
+  '[Op/System]:    SD-DOS V6.22 [Standard].',
+  '[32-bit mode]:  32-bit VCPI interface.',
+  '',
+  'DOSidle installed successfully.',
   ''
 ];
 
