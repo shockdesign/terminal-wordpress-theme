@@ -64,7 +64,7 @@
   </div>
   <div id="commands">
     <div id="defaultline">
-      <span class="defaulttext">C:\> </span><span id="commandcontainer"></span><span class="cursor"></span><input type="text" id="actualinput">
+      <span class="defaulttext">C:\> </span><span id="commandcontainer"></span><span class="cursor">_</span><input type="text" id="actualinput">
     </div>
   </div>
 </body>

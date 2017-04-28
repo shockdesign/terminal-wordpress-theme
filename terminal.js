@@ -186,7 +186,7 @@ $(document).ready(function() {
   $x=0;
   $('#actualinput').focus();
   hidedefault();
-  $('.cursor').css('background','rgb(238, 238, 238)');  
+  $('.cursor').css('color','rgb(238, 238, 238)');
   $link="";
   $sendact=0;
   $clr=0;
@@ -197,12 +197,12 @@ $(document).ready(function() {
         },560);
 
   function blinkcursor(){
-    $bg=$('.cursor').css('background-color');
+    $bg=$('.cursor').css('color');
     if($bg=='rgb(238, 238, 238)'){
       
-      $('.cursor').css('background-color','transparent'); 
+      $('.cursor').css('color','transparent');
     }
-    else $('.cursor').css('background-color','rgb(238, 238, 238)');
+    else $('.cursor').css('color','rgb(238, 238, 238)');
   }
 
   var interval = setInterval(function(){
