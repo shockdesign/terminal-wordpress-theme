@@ -127,7 +127,7 @@ function runcommand($command) {
       // Found a matching command, lets action it.
       if (cmd.type == 'function') {
         var fn = cmd.output;
-        $html = fn(paramters);
+        $html = fn(parameters);
       } else if (cmd.type == 'print') {
         $html = cmd.output;
       }
