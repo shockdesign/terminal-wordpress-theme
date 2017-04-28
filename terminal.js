@@ -284,7 +284,7 @@ $(document).ready(function() {
       } else {
         $('#actualinput').val(results.command);
         if (results.results.length == 1) {
-          $('#actualinput').val(results.results.first);
+          $('#actualinput').val(results.results[0]);
         }
       }
 
