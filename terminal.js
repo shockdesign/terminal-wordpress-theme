@@ -45,11 +45,11 @@ var $commands = [
 ];
 
 function hidedefault() {
-  $('#defaulttext').hide();
+  $('.defaulttext').hide();
 }
 
 function showdefault() {
-  $('#defaulttext').show();
+  $('.defaulttext').show();
 }
 
 function find_tab_completed_command(command) {
