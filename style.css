@@ -11,7 +11,6 @@ body{
   height:20px;
   display:inline-block;
   vertical-align: bottom;
-  background-color: #eee;
 }
 
 #actualinput{
@@ -34,7 +33,7 @@ body{
 }
 
 b {
-  color: #FFEC88;
+  color: #FFFFFF;
   font-weight: lighter;
 }
 
