@@ -39,21 +39,6 @@ function find_tab_completed_command(command) {
   }
 
   return {command: command, results: results};
-
-  // if (results.length == 1) {
-  //   /* One result, lets use it */
-  //   console.log("Found tab result: " + results[0]);
-  //   return results[0];
-  // }
-
-  // console.log("Too many matching results or no results found");
-  // if (results.length > 0) {
-
-  //   var response = "print " + command + " " + results.join(' ');
-  //   runcommand(response);
-  // }
-
-  // return command;
 }
 
 function print_parameters(parameters) {
@@ -94,16 +79,6 @@ function runcommand($command) {
   unnull();
   $command = $command.toLowerCase();
 
-  // var extras = '';
-  // if ($command.startsWith("print")) {
-  //   var results = $command.split(':');
-  //   $command = "print";
-  //   $command2 = results[1];
-  //   for (var i = 2; i < results.length; i ++) {
-  //     extras +=  results[i] + "&#09;";
-  //   }
-  // }
-  // else {
   $command2=$command;
   rehistory($command);
   $history[$z]=$command;
@@ -143,43 +118,6 @@ function runcommand($command) {
   if (!found_command) {
     $html="\'"+$command+"\' Is not a known Command. But that might change the next time you are here. Use '<b>help</b>' for the list of available commands";
   }
-
-  // switch($command){
-  //   case 'help':
-  //   $html=show_available_commands();
-  //   break;
-
-  //   case 'xyzzy':
-  //   $html="Nothing happens";
-  //   break;
-
-  //   case 'clear':
-  //   $clr=1;
-  //   $html="";
-  //   break;
-
-  //   case '':
-  //   $html="";
-  //   break;
-
-  //   case 'print':
-  //   $html = extras;
-  //   break;
-
-  //   case 'reboot':
-  //   $html="The system is going down for reboot NOW!<script>location.reload();</script>";
-  //   break;
-
-  //   default :
-  //   $html="\'"+$command+"\' Is not a known Command. But that might change the next time you are here. Use '<b>help</b>' for the list of available commands";
-  //   for (var i = 0; i < pages.length; i ++) {
-  //     var page = pages[i];
-  //     if ($command == page.command) {
-  //       $html = page.page;
-  //       break;
-  //     }
-  //   }
-  // }
 
   outputText($html);
 }
