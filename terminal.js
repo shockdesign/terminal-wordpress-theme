@@ -128,7 +128,7 @@ function runcommand($command) {
   $z++;
   $x=$z;
   // }
-  $('#defaultline').before('<div class="commandline" id="commandline'+$l+'"><span class="defaulttext">C:\\> </span>'+$command2+'</div>');
+  $('#defaultline').before('<div class="commandline" id="commandline'+$l+'"><span class="defaulttext">C:\\></span>'+$command2+'</div>');
 
   var given_commands = $command.split(" ");
   var command = given_commands[0];
