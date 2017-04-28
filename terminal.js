@@ -160,6 +160,7 @@ $(document).ready(function() {
   function updateIntro() {
     if ($i >= $startup.length) {
       clearInterval(interval);
+      showdefault();
       return;
     }
     var html = $('#introdiv').html();
@@ -178,8 +179,8 @@ $(document).ready(function() {
   $clr=0;
   $save=0;
 
-  $('#introdiv').html(frontpage + "<br />Start with <b>help</b> to learn the commands.");
-  showdefault();
+  // $('#introdiv').html(frontpage + "<br />Start with <b>help</b> to learn the commands.");
+  // showdefault();
 
   setInterval(function(){
           blinkcursor();
