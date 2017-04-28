@@ -39,7 +39,7 @@ var $commands = [
   {cmd: 'help',   hidden: false,    clear: false,   type: 'function',   output: show_available_commands,    help: 'Lists all available commands'},
   {cmd: 'cls',    hidden: false,    clear: true,    type: 'print',      output: '',                         help: 'Clear the screen'},
   {cmd: 'dir',    hidden: false,    clear: false,   type: 'print',      output: '',                         help: 'Show directories or files in current directory'},
-  {cmd: 'date',   hidden: false,    clear: false,   type: 'print',      output: '',                         help: 'Display the current date and time'},
+  {cmd: 'date',   hidden: false,    clear: false,   type: 'function',   output: show_date,                  help: 'Display the current date and time'},
   {cmd: 'type',   hidden: false,    clear: false,   type: 'print',      output: '',                         help: 'Display a given file'},
   {cmd: 'xyzzy',  hidden: true,     clear: false,   type: 'print',      output: 'Nothing happens',          help: 'Nothing happens'}
 ];
@@ -84,6 +84,11 @@ function show_available_commands(parameters) {
 
   print += "</div>";
   return print;
+}
+
+function show_date(parameters) {
+  var date = new Date("now");
+  return "Current date is " + date;
 }
 
 function outputText(outputText) {
