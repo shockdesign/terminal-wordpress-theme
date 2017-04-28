@@ -180,21 +180,7 @@ $(document).ready(function() {
 
   $('#introdiv').html('');
 
-  $i=0;
-  var interval = setInterval(function(){
-                              updateIntro();
-                            }, 500);
-  function updateIntro() {
-    if ($i >= $startup.length) {
-      clearInterval(interval);
-      showdefault();
-      return;
-    }
-    var html = $('#introdiv').html();
-    html += $startup[$i] + "<br />";
-    $('#introdiv').html(html);
-    $i ++;
-  }
+  $l=0;
 
   $z=0;
   $x=0;
@@ -206,8 +192,7 @@ $(document).ready(function() {
   $clr=0;
   $save=0;
 
-  // $('#introdiv').html(frontpage + "<br />Start with <b>help</b> to learn the commands.");
-  // showdefault();
+  showdefault();
 
   setInterval(function(){
           blinkcursor();
@@ -222,7 +207,18 @@ $(document).ready(function() {
     else $('.cursor').css('background-color','rgb(238, 238, 238)');
   }
 
-  $l=0;  
+  var interval = setInterval(function(){
+                              updateIntro();
+                            }, 500);
+  function updateIntro() {
+    if ($l >= $startup.length) {
+      clearInterval(interval);
+      return;
+    }
+    outputText($startup[$l] + "<br />");
+  }
+
+  // $('#introdiv').html(frontpage + "<br />Start with <b>help</b> to learn the commands.");
 
   $(document).bind('keyup', function(e) {
     $existing=$('#commandcontainer').text();
