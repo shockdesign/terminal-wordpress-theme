@@ -37,7 +37,7 @@ var $startup = [
 
 var $commands = [
   {cmd: 'help',   hidden: false,    clear: false,   type: 'function',   output: show_available_commands,    help: 'Lists all available commands'},
-  {cmd: 'cls',    hidden: false,    clear: true,    type: 'print',      output: '',                         help: 'Clear the screen'},
+  {cmd: 'cls',    hidden: false,    clear: true,    type: 'function',   output: clear_screen,               help: 'Clear the screen'},
   {cmd: 'dir',    hidden: false,    clear: false,   type: 'print',      output: '',                         help: 'Show directories or files in current directory'},
   {cmd: 'date',   hidden: false,    clear: false,   type: 'function',   output: show_date,                  help: 'Display the current date and time'},
   {cmd: 'type',   hidden: false,    clear: false,   type: 'print',      output: '',                         help: 'Display a given file'},
@@ -66,6 +66,13 @@ function find_tab_completed_command(command) {
   }
 
   return {command: command, results: results};
+}
+
+function clear_screen(parameters) {
+  $l=0;
+  $('.line').remove();
+  $('.commandline').remove();
+  return '';
 }
 
 function print_parameters(parameters) {
@@ -97,12 +104,6 @@ function outputText(outputText) {
   $('#commandcontainer').text("");
   $('#actualinput').val("");
   $l++;
-  if($clr==1){
-    $l=0;
-    $('.line').remove();
-    $('.commandline').remove();
-    $clr=0;
-  }
   $('#actualinput').focus();
   $(document).scrollTop($(document).height());
 }
@@ -138,11 +139,6 @@ function runcommand($command) {
         $html = fn(parameters);
       } else if (cmd.type == 'print') {
         $html = cmd.output;
-      }
-
-      $clr = 0;
-      if (cmd.clear) {
-        $clr = 1;
       }
     }
   }
@@ -187,10 +183,6 @@ $(document).ready(function() {
   $('#actualinput').focus();
   hidedefault();
   $('.cursor').css('color','rgb(238, 238, 238)');
-  $link="";
-  $sendact=0;
-  $clr=0;
-  $save=0;
 
   setInterval(function(){
           blinkcursor();
