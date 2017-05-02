@@ -103,9 +103,23 @@ function show_help(parameters) {
   return "No help found for this command";
 }
 
+function format_date(date) {
+  var dayNames = [
+    "Sun", "Mon", "Tue",
+    "Wed", "Thu", "Fri", "Sat"
+  ];
+
+  var dayIndex = date.getDay();
+  var day = date.getDate();
+  var month = date.getMonth();
+  var year = date.getFullYear();
+
+  return dayNames[dayIndex] + ' ' + day + '/' + month + '/' + year;
+}
+
 function show_date(parameters) {
   var date = new Date();
-  return "Current date is " + date;
+  return "Current date is " + format_date(date);
 }
 
 function outputText(outputText) {
